@@ -1,13 +1,3 @@
-# DO NOT IGNORE the next two directories.
-
 # OSX file
 .DS_Store
 
-# Gitbooks
-_book
-node_modules
-
-# ebooks
-3110.pdf
-3110.epub
-3110.mobi

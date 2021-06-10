@@ -1,6 +1,6 @@
 # Summary
 
-This course is about becoming a better programmer.  Studying functional
+This book is about becoming a better programmer.  Studying functional
 programming will help with that.  The biggest obstacle in our way is
 the frustration of speaking a new language, particularly letting go of
 mutable state.  But the benefits will be great:  a discovery that

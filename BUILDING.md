@@ -1,14 +1,29 @@
+# How to Create the Textbook Environment
+
+- Install [Miniconda3 for Python 3.9](https://docs.conda.io/en/latest/miniconda.html).
+- Run `conda update -n base -c defaults conda` to upgrade that base install to
+  latest versions.
+- Proceed with one of the next two options.
+  
+Automatic option (recommended for quality of life):
+
+- Install [conda-auto-env](https://github.com/introkun/conda-auto-env). All you have
+  to do is clone the repo and source the script.
+- Now any time you `cd` into the textbook you'll have the right environment active.
+
+Manual option:
+  
+- Run `conda env create -f environment.yml` to create the `textbook` environment.
+- Run `conda activate textbook` to activate the environment **every time** you want
+  to work on the textbook.
+
 # How to Build the Textbook
 
-Install needed dependencies:
+- Run `make build` or just `make` to build the HTML version.
+- Run `make view` (currently supported on Mac only) to conveniently open the generated
+  HTML in your browser.
 
-* Install [Node.js](https://nodejs.org/en/).
-* Install the [Gitbook CLI](https://www.npmjs.com/package/gitbook-cli).
-  You most likely want to install globally with the `-g` flag, which might
-  require prefixing the install command with `sudo`, as follows:
-  `sudo npm install -g gitbook-cli`.
-* From the root directory of the textbook (the same directory as this file),
-  run `gitbook install` then `gitbook update`.
+# Old instructions (Deprecated, Preserved for future incorporation)
 
 To edit the textbook:
 
