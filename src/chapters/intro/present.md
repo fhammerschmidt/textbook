@@ -1,5 +1,7 @@
 # The Present of OCaml
 
+{{ video_embed | replace("%%VID%%", "JTEwC3HihFc")}}
+
 OCaml is a functional programming language. The key linguistic abstraction of
 functional languages is the mathematical function. A function maps an input to
 an output; for the same input, it always produces the same output. That is,
@@ -45,6 +47,12 @@ that you had. This freedom from mutability is one of the biggest changes in
 perspective that OCaml can give you.
 
 ## The Features of OCaml
+
+{{ video_embed | replace("%%VID%%", "SKr3ItChPSI")}}
+
+{{ video_embed | replace("%%VID%%", "eNLm5Xbgmd0")}}
+
+{{ video_embed | replace("%%VID%%", "T-DIW1dhYzo")}}
 
 OCaml is a *statically-typed* and *type-safe* programming language. A
 statically-typed language detects type errors at compile time, so that programs

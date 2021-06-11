@@ -2,16 +2,33 @@
 
 Do you already know how to program in a mainstream language like Python or Java?
 Good. This book is for you. It's time to learn how to program better. It's time
-to learn a functional language, OCaml. 
+to learn a functional language, OCaml.
 
-```{warning}
-I am being unapologetic, even polemical, yet entirely serious.
+```{Note}
+This textbook has about 200 videos embedded in it. The first one is below. The
+videos usually provide an introduction to material, upon which the textbook then
+expands.
+
+These videos were produced during pandemic when the Cornell course that uses
+this textbook had to be asynchronous. The student response to them was
+overwhelmingly positive, so they are now being made public as part of the
+textbook. But just so you know, they were not produced by a professional A/V
+team&mdash;just a guy in his basement who was learning as he went. 😀
+
+The videos mostly use the versions of OCaml and its ecosystem that were current
+in Fall 2020. Current versions you are using are likely to look different from
+the videos, but don't be alarmed: the underlying ideas are the same. The most
+visible difference is likely to be the VS Code plugin for OCaml. In Fall 2020
+the badly-aging "OCaml and Reason IDE" plugin was still being used. It has since
+been superceded by the "OCaml Platform" plugin.
 ```
 
-Functional programming provides a
-different perspective on programming than what you have experienced so far.
-Adapating to that perspective requires letting go of old ideas: assignment
-statements, loops, classes and objects, among others. That won't be easy.
+{{ video_embed | replace("%%VID%%", "MUcka_SvhLw")}}
+
+Functional programming provides a different perspective on programming than what
+you have experienced so far. Adapating to that perspective requires letting go
+of old ideas: assignment statements, loops, classes and objects, among others.
+That won't be easy.
 
 > <i>Nan-in, a Japanese master during the Meiji era (1868-1912), received a
 > university professor who came to inquire about Zen. Nan-in served tea. He

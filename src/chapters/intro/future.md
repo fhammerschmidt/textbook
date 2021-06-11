@@ -23,7 +23,7 @@ brought garbage collection into the mainstream in 1995; Lisp had it in 1958.
 Java didn't have generics until version 5 in 2004; the ML family had it in 1990.
 First-class functions and type inference have been incorporated into mainstream
 languages like Java, C#, and C++ over the last 10 years, long after functional
-languages introduced them. 
+languages introduced them.
 
 ```{admonition} News Flash!
 Python just announced plans to support pattern matching in February 2021.
