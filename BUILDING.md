@@ -1,4 +1,4 @@
-# How to Create the Textbook Environment
+# How to Create the Conda Textbook Environment
 
 - Install
   [Miniconda3 for Python 3.9](https://docs.conda.io/en/latest/miniconda.html).
@@ -19,6 +19,24 @@ Manual option:
   environment.
 - Run `conda activate textbook` to activate the environment **every time** you
   want to work on the textbook.
+
+# How to Create the OCaml Jupyter Kernel
+
+- Create an OPAM switch for the textbook.  This should be a switch with
+  minimal packages installed. E.g.,
+  `opam switch create textbook ocaml-base-compiler.4.11.1`
+- Install Ocaml-Jupyter with `opam install jupyter`.
+- Run `ocaml-jupyter-opam-genspec`. Note in the output where it generated
+  the kernelspec. Edit that file and change the `display_name` to just "OCaml".
+  **That's important.** The display name will be hardcoded in each chapter
+  that uses code cells, unfortunately, so we need a name that is consistent
+  and independent of the name of the switch in the current semester.
+- Make sure you've already done the above Conda environment install and have
+  that environment active.
+- Run `jupyter kernelspec install --user --name ocaml-jupyter "$(opam var share)/jupyter"`
+- If your `~/.ocamlinit` has `#use "topfind";;` consider commenting it out to
+  reduce the amount of output you are about to see when building the textbook.
+  Utop doesn't need it; plain old `ocaml` does.
 
 # How to Build the Textbook
 

@@ -1,19 +1,3 @@
-# Summary
-
-* [Cover Page](README.md)
-
----
-
-* [1. Introduction](intro/intro.md)
-  - [1.1. Programming Languages](intro/pl.md)
-  - [1.2. OCaml](intro/ocaml.md)
-  - [1.3. Mutability](intro/mutability.md)
-  - [1.4. Summary](intro/summary.md)
-  - [1.5. Exercises](intro/exercises.md)
-  - [1.6. A Brief History of CS 3110](intro/history.md)
-
----
-
 * [2. The Basics of OCaml](basics/intro.md)
   - [2.1. Interacting with OCaml](basics/interacting.md)
   - [2.2. Expressions](basics/expressions.md)
@@ -29,13 +13,13 @@
     + [2.3.5. Partial Application](basics/partial_application.md)
     + [2.3.6. Operators as Functions](basics/operators_functions.md)
     + [2.3.7. Documentation](basics/documentation.md)
-    + [2.3.8. Preconditions and Postconditions](basics/pre_post_conditions.md)    
+    + [2.3.8. Preconditions and Postconditions](basics/pre_post_conditions.md)
   - [2.4. Debugging](basics/debugging.md)
     + [2.4.1. Printing](basics/printing.md)
     + [2.4.2. Defensive Programming](basics/defensive.md)
   - [2.5. Summary](basics/summary.md)
   - [2.6. Exercises](basics/exercises.md)
-  
+
 * [3. Data in OCaml](data/intro.md)
   - [3.1. Standard Data Types](data/standard.md)
 	+ [3.1.1. Lists](data/lists.md)
@@ -74,7 +58,7 @@
 	+ [3.2.7. Example: Natural Numbers](data/nats.md)
   - [3.3. Summary](data/summary.md)
   - [3.4. Exercises](data/exercises.md)
-  
+
 * [4. Higher-order Programming](hop/intro.md)
   - [4.1. The Meaning of "Higher Order"](hop/higher_order.md)
   - [4.2. The Abstraction Principle](hop/abstraction_principle.md)
@@ -99,8 +83,8 @@
     + [5.2.1. Structures](modules/structures.md)
 	+ [5.2.2. Scope](modules/scope.md)
 	+ [5.2.3. Signatures](modules/signatures.md)
-    + [5.2.4. Abstract Types](modules/abstract_types.md)	
-    + [5.2.5. Semantics of Modules](modules/semantics_modules.md)    
+    + [5.2.4. Abstract Types](modules/abstract_types.md)
+    + [5.2.5. Semantics of Modules](modules/semantics_modules.md)
     + [5.2.6. Functional Data Structures](modules/functional_data_structures.md)
 	  * [5.2.6.1. Example: Stacks](modules/ex_stacks.md)
 	  * [5.2.6.2. Example: Queues](modules/ex_queues.md)
@@ -122,7 +106,7 @@
 	  * [5.3.2.3. Example: Standard Library Map](modules/stdlib_map.md)
   - [5.4. Summary](modules/summary.md)
   - [5.5. Exercises](modules/exercises.md)
-  
+
 * [6. Specifications and Abstraction](abstract/intro.md)
   - [6.1. Specification of Functions](abstract/function_specs.md)
   - [6.2. The Specification Game](abstract/game.md)
@@ -134,7 +118,7 @@
   - [6.8. Implementing the Representation Invariant](abstract/impl_ri.md)
   - [6.9. Summary](abstract/summary.md)
   - [6.10. Exercises](abstract/exercises.md)
-  
+
 * [7. Testing](testing/intro.md)
   - [7.1. Test Coverage](testing/coverage.md)
   - [7.2. Black-box Testing](testing/blackbox.md)
@@ -164,9 +148,9 @@
 - [9. Efficiency](eff/intro.md)
   - [9.1. Defining Efficiency](eff/defining.md)
     - [9.1.1 Algorithms and Efficiency, Attempt 1](eff/eff1.md)
-    - [9.1.2 Algorithms and Efficiency, Attempt 2](eff/eff2.md)       
+    - [9.1.2 Algorithms and Efficiency, Attempt 2](eff/eff2.md)
     - [9.1.3 Big-Oh Notation](eff/bigoh.md)
-    - [9.1.4 Algorithms and Efficiency, Attempt 3](eff/eff3.md)       
+    - [9.1.4 Algorithms and Efficiency, Attempt 3](eff/eff3.md)
   - [9.2. Efficient Maps](eff/eff_maps.md)
     - [9.2.1. Association Lists](eff/map_assoclist.md)
     - [9.2.2. Direct Address Tables](eff/map_dat.md)
@@ -179,9 +163,9 @@
   - [9.4. Functional Maps](eff/funmaps.md)
      - [9.4.1. Binary Search Trees](eff/bst.md)
      - [9.4.2. Red-Black Trees](eff/rb.md)
-     - [9.4.3. Maps and Sets from BSTs](eff/bst_maps.md)     
+     - [9.4.3. Maps and Sets from BSTs](eff/bst_maps.md)
   - [9.5. Summary](eff/summary.md)
-  - [9.6. Exercises](eff/exercises.md) 
+  - [9.6. Exercises](eff/exercises.md)
 
 * [10. Interpreters](interp/intro.md)
   - [10.1. Lexing and Parsing](interp/lex_parse.md)
@@ -208,28 +192,28 @@
     - [10.5.4. Let Polymorphism](interp/letpoly.md)
   - [10.6. Summary](interp/summary.md)
   - [10.7. Exercises](interp/exercises.md)
-  
-* [11. Proofs about Programs](fm/intro.md) 
+
+* [11. Proofs about Programs](fm/intro.md)
   - [11.1. Equality](fm/eq.md)
   - [11.2. Equational Reasoning](fm/eq_reasoning.md)
-  - [11.3. Induction on Integers](fm/induction_int.md)    
+  - [11.3. Induction on Integers](fm/induction_int.md)
   - [11.4. Programs as Specifications](fm/prog_as_spec.md)
   - [11.5. Recursion vs Iteration](fm/rec_vs_it.md)
   - [11.6. Termination](fm/termination.md)
   - [11.7. Induction on Variants](fm/induction_variants.md)
     - [11.7.1. Induction on Naturals](fm/induction_nats.md)
     - [11.7.2. Induction on Lists](fm/induction_lists.md)
-    - [11.7.3. A Theorem about Folding](fm/theorem_fold.md)    
-    - [11.7.4. Induction on Trees](fm/induction_trees.md)  
+    - [11.7.3. A Theorem about Folding](fm/theorem_fold.md)
+    - [11.7.4. Induction on Trees](fm/induction_trees.md)
     - [11.7.5. Induction Principles for All Variants](fm/induction_general.md)
   - [11.8. Algebraic Specification](fm/alg_spec.md)
     - [11.8.1. Example: Stacks](fm/alg_spec_stack.md)
     - [11.8.2. Example: Queues](fm/alg_spec_queue.md)
     - [11.8.3. Example: Two-List Queues](fm/alg_spec_tlqueue.md)
-  - [11.9. Designing Algebraic Specifications](fm/alg_spec_eqs.md)    
+  - [11.9. Designing Algebraic Specifications](fm/alg_spec_eqs.md)
   - [11.10. Summary](fm/summary.md)
   - [11.11. Exercises](fm/exercises.md)
-  
+
 * [12. Advanced Topics](adv/intro.md)
   - [12.1. Infinite Data Structures](adv/infinite.md)
 	- [12.1.1. Streams](adv/streams.md)
@@ -248,5 +232,4 @@
   - [12.4. The Curry-Howard Correspondence](adv/curry-howard.md)
   - [12.5. Memoization](adv/memoization.md)
   - [12.6. Summary](adv/summary.md)
-  - [12.7. Exercises](adv/exercises.md)  
-
+  - [12.7. Exercises](adv/exercises.md)

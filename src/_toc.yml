@@ -13,3 +13,14 @@
   - file: chapters/intro/3110.md
   - file: chapters/intro/summary.md
   - file: chapters/intro/exercises.md
+
+- file: chapters/basics/intro.md
+  sections:
+  - file: chapters/basics/toplevel.md
+  - file: chapters/basics/compiling.md
+  - file: chapters/basics/expressions.md
+  - file: chapters/basics/functions.md
+  - file: chapters/basics/documentation.md
+  - file: chapters/basics/debugging.md
+  - file: chapters/basics/summary.md
+  # - file: chapters/basics/exercises.md
