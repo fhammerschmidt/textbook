@@ -45,7 +45,9 @@ parse:
     # id at each place where a video is linked in the textbook source.
     video_embed: '<div class="container16x9"><iframe src="https://www.youtube.com/embed/%%VID%%" class="responsive-iframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
     # Macros for exercises. It's tricky to get these to work for both HTML
-    # and PDF. If you make any changes, be sure to check both outputs.
+    # and PDF. If you make any changes, be sure to check both outputs. If you
+    # change the star symbol, make sure to change it at the end of chapter 1,
+    # too.
     ex: |
       ---
       **Exercise: %%_NAME%% [%%STARS%%]**
