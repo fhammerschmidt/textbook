@@ -44,10 +44,15 @@ parse:
     # The %%VID%% part of the src attribute is replaced by the YouTube video
     # id at each place where a video is linked in the textbook source.
     video_embed: '<div class="container16x9"><iframe src="https://www.youtube.com/embed/%%VID%%" class="responsive-iframe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>'
-    ex1: '<hr/><p><b>Exercise: %%NAME%% [&#10029;]</b></p>'
-    ex2: '<hr/><p><b>Exercise: %%NAME%% [&#10029;&#10029;]</b></p>'
-    ex3: '<hr/><p><b>Exercise: %%NAME%% [&#10029;&#10029;&#10029;]</b></p>'
-    ex4: '<hr/><p><b>Exercise: %%NAME%% [&#10029;&#10029;&#10029;&#10029;]</b></p>'
+    # Macros for exercises. It's tricky to get these to work for both HTML
+    # and PDF. If you make any changes, be sure to check both outputs.
+    ex: |
+      ---
+      **Exercise: %%_NAME%% [%%STARS%%]**
+    ex1: '{{ ex | replace("%%STARS%%", "&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
+    ex2: '{{ ex | replace("%%STARS%%", "&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
+    ex3: '{{ ex | replace("%%STARS%%", "&starf;&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
+    ex4: '{{ ex | replace("%%STARS%%", "&starf;&starf;&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
   # Extensions to enable in the myst parser. See
   # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
   myst_enable_extensions:
