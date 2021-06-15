@@ -23,4 +23,4 @@
   - file: chapters/basics/documentation.md
   - file: chapters/basics/debugging.md
   - file: chapters/basics/summary.md
-  # - file: chapters/basics/exercises.md
+  - file: chapters/basics/exercises.md
