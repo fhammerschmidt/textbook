@@ -24,3 +24,32 @@
   - file: chapters/basics/debugging.md
   - file: chapters/basics/summary.md
   - file: chapters/basics/exercises.md
+
+- file: chapters/data/intro.md
+  sections:
+  - file: chapters/data/lists.md
+  - file: chapters/data/variants.md
+  - file: chapters/data/ounit.md
+    # HERE
+  - file: chapters/data/records.md
+  - file: chapters/data/tuples.md
+  - file: chapters/data/oneof_eachof.md
+  - file: chapters/data/pattern_matching_advanced.md
+    # - file: chapters/data/pattern_matching_let.md
+    # - file: chapters/data/pattern_matching_functions.md
+    # - file: chapters/data/pattern_matching_examples.md
+  - file: chapters/data/advanced.md
+  - file: chapters/data/options.md
+  - file: chapters/data/assoc_list.md
+  - file: chapters/data/type_synonym.md
+  - file: chapters/data/algebraic_data_types.md
+    # - file: chapters/data/catch_all_cases.md
+    # - file: chapters/data/recursive_variants.md
+    # - file: chapters/data/parameterized_variants.md
+    # - file: chapters/data/polymorphic_variants.md
+    # - file: chapters/data/builtin_variants.md
+  - file: chapters/data/exceptions.md
+  - file: chapters/data/trees.md
+  - file: chapters/data/nats.md
+  - file: chapters/data/summary.md
+#  - file: chapters/data/exercises.md
