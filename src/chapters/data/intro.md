@@ -17,7 +17,16 @@ data types to learn about unit testing in OCaml with OUnit, a unit testing
 framework similar to those you might have used in other languages. OUnit relies
 on lists, which is why we couldn't cover it before now.
 
-Later in the chapter, we will see how we can define our own *algebraic data
-types*. We'll also discover how several of OCaml's built-in data types are
-actually definable with algebraic data types. We'll use algebraic data types to
-define our own custom types for trees and maps.
+Later in the chapter, we study some OCaml data types that are unlikely to be as
+familiar from other languages. They include:
+
+- **options**, which are loosely related to `null` in Java;
+
+- **association lists**, which are an amazingly simple implementation
+  of maps (aka dictionaries) based on lists and tuples;
+
+- **algebraic data types**, which are arguably the most important
+  kind of type in OCaml, and indeed are the power behind many
+  of the other built-in types; and
+
+- **exceptions**, which are a special kind of algebraic data type.
