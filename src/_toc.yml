@@ -36,9 +36,8 @@
   - file: chapters/data/options.md
   - file: chapters/data/assoc_list.md
   - file: chapters/data/algebraic_data_types.md
-  # HERE
   - file: chapters/data/exceptions.md
   - file: chapters/data/trees.md
   - file: chapters/data/nats.md
   - file: chapters/data/summary.md
-#  - file: chapters/data/exercises.md
+  - file: chapters/data/exercises.md

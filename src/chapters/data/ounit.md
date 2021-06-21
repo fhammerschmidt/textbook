@@ -322,7 +322,13 @@ writing `toString()` methods in Java: for complicated types you invent yourself,
 the language doesn't know how to render them as strings. You have to provide the
 code that does it.
 
-## Test-driven Development
+## Testing for Exceptions
+
+We have a little more of OCaml to learn before we can see how to test for
+exceptions. You can peek ahead to [the section on exceptions](exceptions) if you
+want to know now.
+
+## Test-Driven Development
 
 Testing doesn't have to happen strictly after you write code. In *test-driven
 development* (TDD), testing comes first! It emphasizes *incremental* development

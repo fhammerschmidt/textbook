@@ -620,3 +620,18 @@ here? That's hard to say, but maybe 10,000 is a good estimate, according to the
 [standard library documentation of the `List` module][list].
 
 [list]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/List.html
+
+Here is a useful tail-recursive function to produce a long list:
+```{code-cell} ocaml
+(** [from i j l] is the list containing the integers from [i] to [j],
+    inclusive, followed by the list [l].
+    Example:  [from 1 3 [0] = [1;2;3;0]] *)
+let rec from i j l = if i > j then l else from i (j - 1) (j :: l)
+
+(** [i -- j] is the list containing the integers from [i] to [j], inclusive. *)
+let ( -- ) i j = from i j []
+
+let longlist = 0 -- 1_000_000
+```
+It would be worthwhile to study the definition of `--` to convince yourself
+that you understand (i) how it works and (ii) why it is tail recursive.

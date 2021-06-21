@@ -62,6 +62,10 @@ parse:
     ex2: '{{ ex | replace("%%STARS%%", "&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
     ex3: '{{ ex | replace("%%STARS%%", "&starf;&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
     ex4: '{{ ex | replace("%%STARS%%", "&starf;&starf;&starf;&starf;") | replace("%%_NAME%%", "%%NAME%%")}}'
+    solutions: |
+      Solutions to exercises are available to students in Cornell's CS 3110.
+      Instructors at other institutions are welcome to contact Michael Clarkson
+      for access.
   # Extensions to enable in the myst parser. See
   # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
   myst_enable_extensions:
