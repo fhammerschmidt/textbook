@@ -1,48 +1,34 @@
 # Higher-Order Programming
 
-Functions are values just like any other value in OCaml. What does that
-mean exactly? This means that we can pass functions around as arguments
-to other functions, that we can store functions in data structures, that
-we can return functions as a result from other functions.
+Functions are values just like any other value in OCaml. What does that mean
+exactly? This means that we can pass functions around as arguments to other
+functions, that we can store functions in data structures, that we can return
+functions as a result from other functions, and so forth.
 
-Let us look at why it is useful to have higher-order functions. The
-first reason is that it allows you to write general, reusable code.
-Consider these functions `double` and `square` on integers:
+*Higher-order functions* either take other functions as input or return other
+functions as output (or both). Higher-order functions are also known as
+*functionals*, and programming with them could therefore be called *functional
+programming*&mdash;indicating what the heart of programming in languages like
+OCaml is all about.
 
-```
-let double x = 2 * x
-let square x = x * x
-```
+Higher-order functions were one of the more recent adoptions from functional
+languages into mainstream languages. The Java 8 Streams library and Python 2.3's
+`itertools` modules are examples of that; C++ has also been increasing its
+support since at least 2011.
 
-Let's use these functions to write other functions that
-quadruple and raise a number to the fourth power:
-```
-let quad x   = double (double x)
-let fourth x = square (square x)
-```
-
-There is an obvious similarity between these two functions: what they do
-is apply a given function twice to a value. By passing in the function
-to another function `twice` as an argument, we can abstract this
-functionality:
-
-```
-let twice f x = f (f x)
-(* twice : ('a -> 'a) -> 'a -> 'a *)
-```
-
-Using `twice`, we can implement `quad` and `fourth` in a uniform way:
-
-```
-let quad   x = twice double x
-let fourth x = twice square x
+```{note}
+C wizards might object the adoption isn't so recent. After all, C has long had
+the ability to do higher-order programming through function pointers. But that
+ability also depends on the programming pattern of passing an additional
+*environment* parameter to provide the values of variables in the function to be
+called through the pointer. As we'll see in our later chapter on interpreters,
+the essence of (higher-order) functions in a functional langauge is that they
+are really something called a *closure* that obviates the need for that extra
+parameter. Bear in mind that the issue is not what is *possible* to compute in a
+language&mdash;after all everything is eventually compiled down to machine code,
+so we could just write in that exclusively&mdash;but what is *pleasant* to
+compute.
 ```
 
-*Higher-order functions* either take other functions as input or return
-other functions as output (or both).  The function `twice` is higher-order: 
-its input `f` is a function.  And&mdash;recalling that all OCaml functions
-really take only a single argument&mdash;its output is technically 
-`fun x -> f (f x)`, so `twice` returns a function hence is also higher-order
-in that way.  Higher-order functions are also known as *functionals*, and
-programming with them could be called *functional programming*&mdash;indicating
-what the heart of programming in languages like OCaml is all about.
+In this chapter we will see what all the fuss is about.  Higher-order functions
+enable beautiful, general, reusable code.

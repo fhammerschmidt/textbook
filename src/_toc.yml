@@ -41,3 +41,15 @@
   - file: chapters/data/nats.md
   - file: chapters/data/summary.md
   - file: chapters/data/exercises.md
+
+- file: chapters/hop/intro.md
+  sections:
+  - file: chapters/hop/higher_order.md
+  - file: chapters/hop/map.md
+  - file: chapters/hop/filter.md
+  - file: chapters/hop/fold.md
+  - file: chapters/hop/beyond_lists.md
+  - file: chapters/hop/pipelining.md
+  - file: chapters/hop/currying.md
+  - file: chapters/hop/summary.md
+  - file: chapters/hop/exercises.md
