@@ -161,7 +161,7 @@ one line and linearithmic space and time? *Hint: `List.sort_uniq`.*
 A mathematical *matrix* can be represented with lists. In *row-major*
 representation, this matrix
 
-$$ \left[ \begin{array}{c} 1 & 1 & 1 \\ 9 & 8 & 7 \end{array} \right] $$
+$$ \begin{bmatrix} 1 & 1 & 1 \\ 9 & 8 & 7 \end{bmatrix} $$
 
 would be represented as the list `[[1; 1; 1]; [9; 8; 7]]`. Let's represent a
 *row vector* as an `int list`. For example, `[9; 8; 7]` is a row vector.
