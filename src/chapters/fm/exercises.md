@@ -1,6 +1,6 @@
 # Exercises
 
-##### Exercise: exp [&#10029;&#10029;] 
+##### Exercise: exp [&#10029;&#10029;]
 
 Prove that `exp x (m + n) = exp x m * exp x n`, where
 ```
@@ -10,7 +10,7 @@ let rec exp x n =
 ```
 Proceed by induction on `m`.
 
-##### Exercise: fibi [&#10029;&#10029;&#10029;] 
+##### Exercise: fibi [&#10029;&#10029;&#10029;]
 
 Prove that `forall n >= 1, fib n = fibi n (0, 1)`, where
 ```
@@ -26,7 +26,7 @@ let rec fibi n (prev, curr) =
 Proceed by induction on `n`, rather than trying to apply the theorem
 about converting recursion into iteration.
 
-##### Exercise: expsq [&#10029;&#10029;&#10029;] 
+##### Exercise: expsq [&#10029;&#10029;&#10029;]
 
 Prove that `expsq x n = exp x n`, where
 ```
@@ -39,7 +39,7 @@ Proceed by *strong induction* on `n`.  Function `expsq` implements
 *exponentiation by repeated squaring*, which results in more efficient
 computation than `exp`.
 
-##### Exercise: mult [&#10029;&#10029;] 
+##### Exercise: mult [&#10029;&#10029;]
 
 Prove that `forall n, mult n Z = Z` by induction on `n`, where:
 ```
@@ -49,11 +49,11 @@ let rec mult a b =
   | S k -> plus b (mult k b)
 ```
 
-##### Exercise: append nil [&#10029;&#10029;] 
+##### Exercise: append nil [&#10029;&#10029;]
 
 Prove that `forall lst, lst @ [] = lst` by induction on `lst`.
 
-##### Exercise: rev dist append [&#10029;&#10029;&#10029;] 
+##### Exercise: rev dist append [&#10029;&#10029;&#10029;]
 
 Prove that reverse distributes over append, i.e., that
 `forall lst1 lst2, rev (lst1 @ lst2) = rev lst2 @ rev lst1`, where:
@@ -67,13 +67,13 @@ to choose which list to induct over.  You will need the previous exercise
 as a lemma, as well as the associativity of `append`, which was proved in the
 notes above.
 
-##### Exercise: rev involutive [&#10029;&#10029;&#10029;] 
+##### Exercise: rev involutive [&#10029;&#10029;&#10029;]
 
-Prove that reverse is an involution, i.e., that 
+Prove that reverse is an involution, i.e., that
   `forall lst, rev (rev lst) = lst`.
 Proceed by induction on `lst`. You will need the previous exercise as a lemma.
 
-##### Exercise: reflect size [&#10029;&#10029;&#10029;] 
+##### Exercise: reflect size [&#10029;&#10029;&#10029;]
 
 Prove that `forall t, size (reflect t) = size t` by induction on `t`, where:
 ```
@@ -82,7 +82,22 @@ let rec size = function
   | Node (l, v, r) -> 1 + size l + size r
 ```
 
-##### Exercise: propositions [&#10029;&#10029;&#10029;&#10029;] 
+##### Exercise: fold theorem 2 [&#10029;&#10029;&#10029;&#10029;]
+
+We proved that `fold_left` and `fold_right` yield the same results if
+their function argument is associative and commutative.  But that doesn't
+explain why these two implementations of `concat` yield the same results,
+because `( ^ )` is not commutative:
+```ocaml
+let concat_l lst = List.fold_left ( ^ ) "" lst
+let concat_r lst = List.fold_right ( ^ ) lst ""
+```
+Formulate and prove a new theorem about when `fold_left` and `fold_right` yield
+the same results, under the relaxed assumption that their function argument is
+associative but not necessarily commutative. *Hint: make a new assumption about
+the initial value of the accumulator.*
+
+##### Exercise: propositions [&#10029;&#10029;&#10029;&#10029;]
 
 In propositional logic, we have propositions, negation, conjunction,
 disjunction, and implication.  The following BNF describes propositional
@@ -97,20 +112,20 @@ p ::= atom
 atom ::= <identifiers>
 ```
 For example, `raining /\ snowing /\ cold` is a proposition stating that it is
-simultaneously raining and snowing and cold (a weather condition known 
+simultaneously raining and snowing and cold (a weather condition known
 as *Ithacating*).
 
 Define an OCaml type to represent the AST of propositions.  Then state
 the induction principle for that type.
 
-##### Exercise: list spec [&#10029;&#10029;&#10029;] 
+##### Exercise: list spec [&#10029;&#10029;&#10029;]
 
 Design an OCaml interface for lists that has `nil`, `cons`, `append`,
 and `length` operations.  Design the equational specification. Hint:
 the equations will look strikingly like the OCaml implementations of
 `@` and `List.length`.
 
-##### Exercise: bag spec [&#10029;&#10029;&#10029;&#10029;] 
+##### Exercise: bag spec [&#10029;&#10029;&#10029;&#10029;]
 
 A *bag* or *multiset* is like a blend of a list and a set:  like a set, order
 does not matter; like a list, elements may occur more than once.  The number of
@@ -132,5 +147,3 @@ or queries.  Then design an equational specification for bags.  For the `remove`
 operation, your specification should cause at most one occurrence of an element
 to be removed.  That is, the multiplicity of that value should decrease
 by at most one.
-
-
