@@ -54,7 +54,7 @@ code][stdlibsrc].
 The comments that go in an interface file vs. an implementation
 file are different.  Interface files will be read by clients of an abstraction,
 so the comments that go there are for them.  These will generally be specification
-comments describing how to use the abstraction, the preconditions for 
+comments describing how to use the abstraction, the preconditions for
 calling its functions, what exceptions they might raise, and perhaps some
 notes on what algorithms are used to implement operations.  The standard library's
 List module contains many examples of these kinds of comments.
@@ -62,7 +62,9 @@ List module contains many examples of these kinds of comments.
 Implementation files will be read by programmers and maintainers of an
 abstraction, so the comments that go there are for them.  These will be
 comments about how the representation type is used, how the code works,
-important internal invariants it maintains, and so forth.  
+important internal invariants it maintains, and so forth.
+
+TODO: mention post-placement of `**` comments.
 
 ## An Example with Stacks
 

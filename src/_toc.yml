@@ -53,3 +53,32 @@
   - file: chapters/hop/currying.md
   - file: chapters/hop/summary.md
   - file: chapters/hop/exercises.md
+
+
+- file: chapters/modules/intro.md
+  sections:
+  - file: chapters/modules/module_systems.md
+  #- file: chapters/modules/Module.ipynb
+  - file: chapters/modules/modules.md
+  #   - file: chapters/modules/abstract_types.md
+  #   - file: chapters/modules/functional_data_structures.md
+  #     - file: chapters/modules/ex_stacks.md
+  #     - file: chapters/modules/ex_queues.md
+  #     - file: chapters/modules/ex_dictionaries.md
+  #     - file: chapters/modules/ex_sets.md
+  #     - file: chapters/modules/ex_arithmetic.md
+  #   - file: chapters/modules/sharing_constraints.md
+  #   - file: chapters/modules/compilation_units.md
+  #   - file: chapters/modules/toplevel.md
+  # - file: chapters/modules/reuse.md
+  #   - file: chapters/modules/includes.md
+  #     - file: chapters/modules/semantics_includes.md
+  #     - file: chapters/modules/encapsulation_includes.md
+  #     - file: chapters/modules/include_vs_open.md
+  #     - file: chapters/modules/include_multiple.md
+  #   - file: chapters/modules/functors.md
+  #     - file: chapters/modules/functor_syntax.md
+  #     - file: chapters/modules/using_functors.md
+  #     - file: chapters/modules/stdlib_map.md
+  # - file: chapters/modules/summary.md
+  # - file: chapters/modules/exercises.md
