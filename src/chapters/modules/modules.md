@@ -134,6 +134,37 @@ ListStack.(empty |> push 1 |> push 2)
 Now we can read the code left-to-right without having to parse parentheses.
 Nice.
 
+```{warning}
+There's a common confusion lurking here for those programmers coming from
+object-oriented languages. It's tempting to think of `ListStack` as being a
+class from which objects are instantiated. That's not the case though. Notice
+how there is no `new` operator used to create a stack above, nor any
+constructors (in the OO sense of that word), nor any methods with a `this`
+keyword to denote the receiving object of the method call.
+```
+
+Modules are considerably more basic than classes. A module is just a collection
+of definitions in its own namespace. In `ListStack`, we have some definitions of
+functions&mdash;`push`, `pop`, etc.&mdash;and one value, `empty`.
+
+So whereas in Java we might create a couple of stacks using code like this:
+
+```java
+Stack s1 = new Stack();
+s1.push(1);
+s1.push(2);
+Stack s2 = new Stack();
+s2.push(3);
+```
+
+In OCaml the same stacks could be created as follows:
+
+```{code-cell} ocaml
+let s1 = ListStack.(empty |> push 1 |> push 2)
+let s2 = ListStack.(empty |> push 3)
+```
+
+
 ## Module Definitions
 
 The `module` definition keyword is much like the `let` definition keyword that
@@ -479,7 +510,8 @@ The compiler agrees that the module `ListStack` does define all the items
 specified by `LIST_STACK` with appropriate types.  If we had accidentally
 omitted some item, the type annotation would have been rejected:
 
-```ocaml
+```{code-cell} ocaml
+:tags: ["raises-exception"]
 module ListStack : LIST_STACK = struct
   let empty = []
 
@@ -497,15 +529,6 @@ module ListStack : LIST_STACK = struct
 end
 ```
 
-<!-- Unfortunately making the block above a code-cell doesn't work.  The
-     error output for some reason can't be lexed by Sphinx, which is a library
-     that JupyterBook builds upon. -->
-
-```text
-Error: Signature mismatch:
-       ...
-       The value `pop' is required but not provided
-```
 **Syntax.**
 
 The most common syntax for a module type is simply:
@@ -623,7 +646,10 @@ dynamic semantics.
 
 Earlier in this section we delayed discussing the static semantics of module
 expressions. Now that we have learned about module types, we can return to that
-discussion.
+discussion.  We do so, next, in its own section, because the discussion will
+be lengthy.
+
+## Module Type Semantics
 
 The key question we have to answer is: what does a type annotation mean for
 modules? That is, what does it mean when we write the `: T` in
@@ -672,99 +698,214 @@ through such uses of `extends` and `implements`.
 Now it's time to return to OCaml. Its module system also uses subtyping, with
 the same underlying intuition about the Liskov Substitution Principle. But OCaml
 uses a different flavor called *structural subtyping*. That is, it is based on
-the structure of modules rather than their names.
+the structure of modules rather than their names. "Structure" here simply means
+the definitions contained in the module. That structure is &mdash;i.e., those
+definitions are&mdash;what is used to determine whether `(M : T)` is acceptable
+as a type annotation, where `M` is a module and `T` is a module type.
+
+Let's play with this idea of structure through several examples, starting with
+this module:
+
+```{code-cell} ocaml
+module M = struct
+  let x = 0
+  let z = 2
+end
+```
+
+Module `M` contains two definitions. You can see those in the signature for
+the module that OCaml outputs: it contains `x : int` and `z : int`.  Because
+of the former, the module type annotation below is accepted:
 
 ```{code-cell} ocaml
 module type X = sig
   val x : int
 end
 
+module MX = (M : X)
+```
+
+Module type `X` requires a module item named `x` with type `int`.  Module `M`
+does contain such an item.  So `(M : X)` is valid.  The same would work
+for `z`:
+
+```{code-cell} ocaml
+module type Z = sig
+  val z : int
+end
+
+module MZ = (M : Z)
+```
+
+Or for both `x` and `z`:
+
+```{code-cell} ocaml
+module type XZ = sig
+  val x : int
+  val z : int
+end
+
+module MXZ = (M : XZ)
+```
+
+But not for `y`, because `M` contains no such item:
+
+```{code-cell} ocaml
+:tags: ["raises-exception"]
 module type Y = sig
   val y : int
 end
 
-module M = struct
-  let x = 0
-  let z = 2
-end
-
-module _ = (M : X)
+module MY = (M : Y)
 ```
 
-HERE.  Rather stuck on the lexing error in the following cell.
+Take a close look at that error message. Learning to read such errors on small
+examples will help you when they appear in large bodies of code. OCaml is
+comparing two signatures, corresponding to the two expressions on either side of
+the colon in `(M : Y)`. The line
+
+```ocaml
+sig val x : int val z : int end
+```
+
+is the signature that OCaml is using for `M`. Since `M` is a module, that
+signature is just the names and types as they were defined in `M`. OCaml
+compares that signature to `Y`, and discovers a mismatch:
+
+```text
+The value `y' is required but not provided
+```
+
+That's because `Y` requires `y` but `M` provides no such definition.
+
+Here's another error message to practice reading:
 
 ```{code-cell} ocaml
 :tags: ["raises-exception"]
-module _ = (M : Y)
+module type Xstring = sig
+  val x : string
+end
+
+module MXstring = (M : Xstring)
 ```
 
-A structure *matches* a signature if the structure provides definitions
-for all the names specified in the signature (and possibly more), and
-these definitions meet the type requirements given in the signature.
-Usually, a definition meets a type requirement by providing a value
-of exactly that type.  But the definition could instead provide
-a value that has a more general type.  For example:
+This time the error is
+
+```text
+Values do not match: val x : int is not included in val x : string
 ```
-module type Sig = sig
+
+The error changed, because `M` does provide a definition of `x`, but at a
+different type than `Xstring` requires. That's what "is not included in" means
+here. So why doesn't OCaml say something a little more straightforward, like "is
+not the same as"? It's because the types do not have to be exactly the same. If
+the provided value's type is polymorphic, it suffices for the required value's
+type to be an instantiation of that polymorphic type.
+
+For example, if a signature requires a type `int -> int`, it suffices for a
+structure to provide a value of type `'a -> 'a`:
+
+```{code-cell} ocaml
+:tags: ["raises-exception"]
+module type IntFun = sig
   val f : int -> int
 end
 
-module M1 : Sig = struct
-  let f x = x+1
-end
-
-module M2 : Sig = struct
+module IdFun = struct
   let f x = x
 end
-```
-Module `M1` provides a function `f` of exactly the type specified by
-`Sig`, namely, `int->int`. Module `M2` provides a function that is
-instead of type `'a -> 'a`. Both `M1` and `M2` match `Sig`.  Note that
-anywhere a value `v1` of type `int->int` is needed, it's safe to instead
-use a value `v2` of type `'a -> 'a`. That's because if we apply `v2` to
-an `int`, its type guarantees us that we will get an `int` back.
 
-Returning to our example, the structure given above for `ListStack`
-doesn't yet match the signature given above for `Stack`, because that
-structure doesn't define the type `'a stack`.  So we could amend the
-definition of `ListStack` to:
-```
-module ListStack = struct
-  type 'a stack = 'a list
-  (* the rest is the same as before *)
-end
+module Iid = (IdFun : IntFun)
 ```
 
-Now that structure matches the signature of `Stack`.  We can ask the compiler
-to check that by providing a module type annotation for the module:
+So far all these examples were just a matter of comparing the definitions
+required by a signature to the definitions provided by a structure. But here's
+an example that might be surprising:
 
+```{code-cell} ocaml
+:tags: ["raises-exception"]
+module MXZ' = ((M : X) : Z)
 ```
-module ListStack : Stack = struct
-  type 'a stack = 'a list
-  (* the rest is the same as before *)
-end
+
+Why does OCaml complain that `z` is required but not provided? We know from the
+definition of `M` that it indeed does have a value `z : int`.  Yet the
+error message perhaps strangely claims:
+
+```text
+The value `z' is required but not provided.
 ```
 
-The type `'a stack` is an example of a *representation type*:  a type that is
-used to represent a version of a data structure.  Here, we're implementing stacks
-using lists, so the representation type is a list.
+The reason for this error is that we've already supplied the type annotation
+`X` in the module expression `(M : X)`.  That causes the module expression
+to be known only at the module type `X`.  In other words, we've forgotten
+irrevocably about the existence of `z` after that annotation.  All that is
+known is that the module has items required by `X`.
 
+After all those examples, here are the static semantics of module type
+annotations:
 
-If a module is given a module type, as in
-`module M : T = struct ... end`, then there are two checks the compiler
-must perform:
+- Module type annotation `(M : T)` is valid if the module type of `M` is a
+  subtype of `T`. The module type of `(M : T)` is then `T` in any further type
+  checking.
 
-  1.  *Signature matching:*  every name declared in `T` must
-      be defined in `M`.
+- Module type `S` is a subtype of `T` if the set of definitions in `S` is a
+  superset of those in `T`.  Definitions in `T` are permitted to instantiate
+  type variables from `S`.
 
-  2.  *Encapsulation:*  any name defined in `M` that does not appear
-      in `T` is not visible to code outside of `M`.
+The "sub" vs. "super" in the second rule is not a typo. Think about `T` as a set
+of module values. There could be many subtypes `S1`, `S2`, etc. of `T`, each of
+which is a set of module values, and each of those sets would be a subset of
+`T`. But, the way those sets differ from `T` and one another is by adding new
+definitions of their own. For example, a list-based stack might differ from
+`ListStack` by adding a value to keep track of the number of items on the stack.
+Another implementation might add a value to keep track of how many items have
+ever been pushed on the stack in its history. Those additional values inside the
+module make its set of definitions bigger, hence the use of "superset" in the
+rule.
+
+If `M` is just a plain old structure, its module type is whatever signature the
+compiler infers for it. But that can be restricted, as we saw above, by module
+type annotations. All of this is *static*, which is to say the decisions about
+validity are made at compile time rather than run time.
+
+```{important}
+Module type annotations therefore offer potential confusion to programmers
+accustomed to object-oriented languages, in which subtyping works differently.
+
+Python programmers, for example, are accustomed to so-called "duck typing". They
+might expect `((M : X) : Z)` to be valid, because `z` does exist at run-time in
+`M`. But in OCaml, the compile-time type of `(M : X)` has hidden `z` from view
+irrevocably.
+
+Java programmers, on the other hand, might expect that module type annotations
+work like type casts. So it might seem valid to first "cast" `M` to `X` then to
+`Z`. In Java such type casts are checked, as needed, at run time. But OCaml
+module type annotations are static. Once an annotation of `X` is made, there is
+no way to check at compile time what other items might exist in the
+module&mdash;that would require a run-time check, which OCaml does not permit.
+
+In both cases it might feel as though OCaml is being too restrictive. Maybe. But
+in return for that restrictiveness, OCaml is guaranteeing an **absence of
+run-time errors** of the kind that would occur in Java or Python, whether
+because of a run-time error from a cast, or a run-time error from a missing
+method.
+```
+
+In summary, if a module is given a module type, such as in
+`module M : T = struct ... end`, then there are two properties the compiler
+guarantees:
+
+  1. *Signature matching:* every name declared in `T` is defined in `M` at the
+      same or a more general type.
+
+  2. *Encapsulation:* any name defined in `M` that does not appear in `T` is not
+      visible to code outside of `M`.
 
 ## First-Class Modules
 
 Modules are not as first-class in OCaml as functions. There are some language
 extensions that make it possible to bundle up modules as values, but we won't be
-looking at them. If you're curious you can have a look at
+studying them. If you're curious you can have a look at
 [the manual][firstclassmodules].
 
 [firstclassmodules]: http://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec230

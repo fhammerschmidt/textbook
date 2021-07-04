@@ -58,7 +58,6 @@
 - file: chapters/modules/intro.md
   sections:
   - file: chapters/modules/module_systems.md
-  #- file: chapters/modules/Module.ipynb
   - file: chapters/modules/modules.md
   #   - file: chapters/modules/abstract_types.md
   #   - file: chapters/modules/functional_data_structures.md
