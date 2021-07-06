@@ -898,8 +898,8 @@ guarantees:
   1. *Signature matching:* every name declared in `T` is defined in `M` at the
       same or a more general type.
 
-  2. *Encapsulation:* any name defined in `M` that does not appear in `T` is not
-      visible to code outside of `M`.
+  2. *Opacity:* any name defined in `M` that does not appear in `T` is not
+     visible to code outside of `M`.
 
 ## First-Class Modules
 

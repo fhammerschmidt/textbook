@@ -59,7 +59,7 @@
   sections:
   - file: chapters/modules/module_systems.md
   - file: chapters/modules/modules.md
-  #   - file: chapters/modules/abstract_types.md
+  - file: chapters/modules/encapsulation.md
   #   - file: chapters/modules/functional_data_structures.md
   #     - file: chapters/modules/ex_stacks.md
   #     - file: chapters/modules/ex_queues.md
