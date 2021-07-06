@@ -904,8 +904,8 @@ guarantees:
 ## First-Class Modules
 
 Modules are not as first-class in OCaml as functions. There are some language
-extensions that make it possible to bundle up modules as values, but we won't be
-studying them. If you're curious you can have a look at
+extensions that make it possible to bundle up modules as first-class values, but
+we won't be studying them. If you're curious you can have a look at
 [the manual][firstclassmodules].
 
-[firstclassmodules]: http://caml.inria.fr/pub/docs/manual-ocaml/extn.html#sec230
+[firstclassmodules]: https://ocaml.org/manual/firstclassmodules.html
