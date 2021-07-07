@@ -412,213 +412,257 @@ many paragraphs of writing it took to explain it above!
 
 ## Dictionaries
 
-A *dictionary* maps *keys* to *values*.  This data structure typically
-supports at least a lookup operation that allows you to find the value
-with a corresponding key, an insert operation that lets you create a new
-dictionary with an extra key included.  And there needs to be a way of
-creating an empty dictionary.
+Recall that a *dictionary* binds keys to values. Here is a module type for
+dictionaries.  There are many other operations a dictionary might support,
+but these will suffice for now.
 
-We might represent this in a `Dictionary` module type as follows:
-
-```
+```{code-cell} ocaml
 module type Dictionary = sig
+  (** [('k, 'v) t] is the type of dictionaries that bind keys of type ['k] to
+      values of type ['v]. *)
   type ('k, 'v) t
 
-  (* The empty dictionary *)
+  (** [empty] does not bind any keys. *)
   val empty  : ('k, 'v) t
 
-  (* [insert k v d] produces a new dictionary [d'] with the same mappings
-   * as [d] and also a mapping from [k] to [v], even if [k] was already
-   * mapped in [d]. *)
-  val insert : 'k -> 'v -> ('k,'v) t -> ('k,'v) t
+  (** [insert k v d] is the dictionary that binds [k] to [v], and also contains
+      all the bindings of [d].  If [k] was already bound in [d], that old
+      binding is superseded by the binding to [v] in the returned dictionary. *)
+  val insert : 'k -> 'v -> ('k, 'v) t -> ('k, 'v) t
 
-  (* [lookup k d] returns the value associated with [k] in [d].
-   * raises:  [Not_found] if [k] is not mapped to any value in [d]. *)
-  val lookup  : 'k -> ('k,'v) t -> 'v
+  (** [lookup k d] is the value bound to [k] in [d]. Raises: [Not_found] if [k]
+      is not bound in [d]. *)
+  val lookup : 'k -> ('k, 'v) t -> 'v
+
+  (** [bindings d] is an association list containing the same bindings as [d].
+      The keys in the list are guaranteed to be unique. *)
+  val bindings : ('k, 'v) t -> ('k * 'v) list
 end
 ```
 
-Note how the type `Dictionary.t` is parameterized on two types, `'k` and `'v`,
-which are written in parentheses and separated by commas.  Although `('k,'v)`
-might look like a pair of values, it is not: it is a syntax for writing
-multiple type variables.
+Note how `Dictionary.t` is parameterized on two types, `'k` and `'v`, which are
+written in parentheses and separated by commas. Although `('k, 'v)` might look
+like a pair of values, it is not: it is a syntax for writing multiple type
+variables.
 
-We have seen already in this class that an association list can be used
-as a simple implementation of a dictionary.  For example, here is an
-association list that maps some well-known names to an approximation of
-their numeric value:
+Recall that association lists are lists of pairs, where the first element of
+each pair is a key, and the second element is the value it binds. For example,
+here is an association list that maps some well-known names to an approximation
+of their numeric value:
 
 ```
 [("pi", 3.14); ("e", 2.718); ("phi", 1.618)]
 ```
 
-Let's try implementing the `Dictionary` module type with a module
-called `AssocListDict`.
+Naturally we can implement the `Dictionary` module type with association lists:
 
-```
-module AssocListDict = struct
+```{code-cell} ocaml
+module AssocListDict : Dictionary = struct
+  (** The list [(k1, v1); ...; (kn, vn)] binds key [ki] to value [vi].
+      If a key appears more than once in the list, it is bound to the
+      the left-most occurrence in the list. *)
   type ('k, 'v) t = ('k * 'v) list
-
   let empty = []
-
-  let insert k v d = (k,v)::d
-
+  let insert k v d = (k, v) :: d
   let lookup k d = List.assoc k d
+  let keys d = List.(d |> map fst |> sort_uniq Stdlib.compare)
+  let bindings d = d |> keys |> List.map (fun k -> (k, lookup k d))
 end
 ```
 
-If we put that code in a file named `dict.ml`, launch utop, and type:
-```
-# #use "dict.ml";;
-# open AssocListDict;;
-# let d = insert 1 "one" empty;;
-```
-The response we get is:
-```
-val d : (int * string) list = [(1, "one")]
+This implementation of dictionaries is persistent.  For example, adding a new
+binding to the dictionary `d` below does not change `d` itself:
+
+```{code-cell} ocaml
+open AssocListDict
+let d = empty |> insert "pi" 3.14 |> insert "e" 2.718
+let d' = d |> insert "phi" 1.618
+let b = bindings d
+let b' = bindings d'
 ```
 
-But if we change the first line of the implementation of
-`AssocListDict` in `dict.ml` to the following:
-```
-module AssocListDict : Dictionary = struct
-```
-And if we restart utop and repeat the three phrases above (use,open,let),
-we get a different response:
-```
-val d : (int, string) t = <abstr>
+The `insert` operation is constant time, which is great. But the `lookup`
+operation is linear time. It's possible to do much better than that. In a later
+chapter, we'll see how to do better. Logarithmic-time performance is achievable
+with balanced binary trees, and something like constant-time performance with
+hash tables. Neither of those, however, achieves the simplicity of the code
+above.
+
+The `bindings` operation is complicated by potential duplicate keys in the list.
+It uses a `keys` helper function to extract the unique list of keys with the
+help of library function `List.sort_uniq`. That function sorts an input list and
+in the process discards duplicates. It requires a comparison function as input.
+
+```{note}
+A comparison function must return 0 if its arguments compare as equal, a
+positive integer if the first is greater, and a negative integer if the first is
+smaller.
 ```
 
-That's because by indicating that the module has type `Dictionary`, the
-type `AssocListDict.t` has become abstract.  Clients of the module
-are no longer permitted to know that it is implemented with a list.
-That provides encapsulation, so that if we later wanted to change
-the representation, we could safely do so.
+Here we use the standard library's comparison function `Stdlib.compare`, which
+behaves essentially the same as the built-in comparison operators `=`, `<`, `>`,
+etc. Custom comparison functions are useful if you want to have a relaxed notion
+of what being a duplicate means. For example, maybe you'd like to ignore the
+case of strings, or the sign of a number, etc.
+
+The running time of `List.sort_uniq` is linearithmic, and it produces a linear
+number of keys as output.  For each of those keys, we do a linear-time lookup
+operation.  So the total running time of `bindings` is $O(n \log n) + O(n) \cdot
+O(n)$, which is $O(n^2)$.  We can definitely do better than that with
+more advanced data structures.
+
+Actually we can have a constant-time `bindings` operation even with association
+lists, if we are willing to pay for a linear-time `insert` operation:
+
+```{code-cell} ocaml
+module UniqAssocListDict : Dictionary = struct
+  (** The list [(k1, v1); ...; (kn, vn)] binds key [ki] to value [vi].
+      No duplicate keys may occur. *)
+  type ('k, 'v) t = ('k * 'v) list
+  let empty = []
+  let insert k v d = (k, v) :: List.remove_assoc k d
+  let lookup k d = List.assoc k d
+  let bindings d = d
+end
+```
+
+That implementation removes any duplicate binding of `k` before inserting
+a new binding.
 
 ## Sets
 
-Here is a signature for sets:
-```
+Here is a module type for sets. There are many other operations a set data
+structure might be expected to support, but these will suffice for now.
+
+```{code-cell} ocaml
 module type Set = sig
+  (** ['a t] is the type of sets whose elements are of type ['a]. *)
   type 'a t
 
-  (* [empty] is the empty set *)
+  (** [empty] is the empty set *)
   val empty : 'a t
 
-  (* [mem x s] holds iff [x] is an element of [s] *)
-  val mem   : 'a -> 'a t -> bool
+  (** [mem x s] is whether [x] is an element of [s]. *)
+  val mem : 'a -> 'a t -> bool
 
-  (* [add x s] is the set [s] unioned with the set containing exactly [x] *)
-  val add   : 'a -> 'a t -> 'a t
+  (** [add x s] is the set that contains [x] and all the elements of [s]. *)
+  val add : 'a -> 'a t -> 'a t
 
-  (* [elts s] is a list containing the elements of [s].  No guarantee
-   * is made about the ordering of that list. *)
-  val elts  : 'a t -> 'a list
+  (** [elements s] is a list containing the elements of [s].  No guarantee
+      is made about the ordering of that list, but each is guaranteed to
+      be unique. *)
+  val elements : 'a t -> 'a list
 end
 ```
-There are many other operations a set data structure might be expected to
-support, but these will suffice for now.
 
-Here's an implementation of that interface using a list to represent the
-set. This implementation ensures that the list never contains any
-duplicate elements, since sets themselves do not:
-```
-module ListSetNoDups : Set = struct
-  type 'a t   = 'a list
-  let empty   = []
-  let mem     = List.mem
-  let add x s = if mem x s then s else x::s
-  let elts s  = s
+Here's an implementation of that interface using a list to represent the set.
+This implementation ensures that the list never contains any duplicate elements,
+since sets themselves do not:
+
+```{code-cell} ocaml
+module UniqListSet : Set = struct
+  type 'a t = 'a list
+  let empty = []
+  let mem = List.mem
+  let add x s = if mem x s then s else x :: s
+  let elements = Fun.id
 end
 ```
-Note how `add` ensures that the representation never contains any duplicates,
-so the implementation of `elts` is quite easy.  Of course, that makes the
-implementation of `add` linear time, which is not ideal.  But if we want
-high-performance sets, lists are not the right representation anyway;
-there are much better data structures for sets, which you might
-see in an upper-level algorithms course.
+
+Note how `add` ensures that the representation never contains any duplicates, so
+the implementation of `elements` is easy. Of course, that comes with the
+tradeoff of `add` being linear time.
 
 Here's a second implementation, which permits duplicates in the list:
-```
-module ListSetDups : Set = struct
-  type 'a t   = 'a list
-  let empty   = []
-  let mem     = List.mem
-  let add x s = x::s
-  let elts s  = List.sort_uniq Stdlib.compare s
+```{code-cell} ocaml
+module ListSet : Set = struct
+  type 'a t = 'a list
+  let empty = []
+  let mem = List.mem
+  let add = List.cons
+  let elements s = List.sort_uniq Stdlib.compare s
 end
 ```
-In that implementation, the `add` operation is now constant time, and
-the `elts` operation is linearithmic time.
 
-##  Arithmetic
+In that implementation, the `add` operation is now constant time, and the
+`elements` operation is linearithmic time.
 
-Here is a module type that represents values that support the usual operations from
-arithmetic, or more precisely, a *[field][]*:
+## Fields
+
+As a final example, here is a module type that represents values that support
+the usual operations from arithmetic, or more precisely, a *[field][]*:
 
 [field]: https://en.wikipedia.org/wiki/Field_(mathematics)
 
-```
-module type Arith = sig
+```{code-cell} ocaml
+module type Field = sig
   type t
-  val zero  : t
-  val one   : t
-  val (+)   : t -> t -> t
+  val zero : t
+  val one : t
+  val ( + ) : t -> t -> t
   val ( * ) : t -> t -> t
-  val (~-)  : t -> t
-end
-```
-There are a couple syntactic curiosities here.  We have to write `( * )` instead
-of `(*)` because the latter would be parsed as beginning a comment.  And
-we write the `~` in `(~-)` to indicate a *unary* negation operator.
-
-Here is a module that implements that module type:
-```
-module Ints : Arith = struct
-  type t    = int
-  let zero  = 0
-  let one   = 1
-  let (+)   = Stdlib.(+)
-  let ( * ) = Stdlib.( * )
-  let (~-)  = Stdlib.(~-)
-end
-```
-
-Outside of the module `Ints`, the expression `Ints.(one + one)` is perfectly fine,
-but `Ints.(1 + 1)` is not, because `t` is abstract:  outside the module no one
-is permitted to know that `t = int`.  In fact, the toplevel can't even give us
-good output about what the sum of one and one is!
-```
-# Ints.(one + one);;
-- : Ints.t = <abstr>
-```
-
-The reason why is that the type `Ints.t` is abstract: the module type doesn't
-tell use that `Ints.t` is `int`.  This is actually a good thing in many cases:
-code outside of `Ints` can't rely on the internal implementation details of
-`Ints`, and so we are free to change it.
-Since the `Arith` interface only has functions that return `t`, so once you
-have a value of type `t`, all you can do is create other values of type `t`.
-
-When designing an interface with an abstract type, you will almost certainly
-want at least one function that returns something other than that type.
-For example, it's often useful to provide a `to_string` function.  We could
-add that to the `Arith` module type:
-```
-module type Arith = sig
-  (* everything else as before, and... *)
+  val ( ~- ) : t -> t
   val to_string : t -> string
 end
 ```
-And now we would need to implement it as part of `Ints`:
-```
-module Ints : Arith = struct
-  (* everything else as before, and... *)
+
+Recall that we must write `( * )` instead of `(*)` because the latter would be
+parsed as beginning a comment. And we write the `~` in `(~-)` to indicate a
+*unary* negation operator.
+
+This is a bit weird of an example. We don't normally think of numbers as a data
+structure. But what is a data structure except for a set of values and
+operations on them? The `Field` module type makes it clear that's what we have.
+
+Here is a module that implements that module type:
+
+```{code-cell} ocaml
+module IntField : Field = struct
+  type t = int
+  let zero = 0
+  let one = 1
+  let ( + ) = Stdlib.( + )
+  let ( * ) = Stdlib.( * )
+  let ( ~- ) = Stdlib.( ~- )
   let to_string = string_of_int
 end
 ```
-Now we can write:
+
+Because `t` is abstract, the toplevel can't give us good output about what the
+sum of one and one is:
+
+```{code-cell} ocaml
+IntField.(one + one)
 ```
-# Ints.(to_string (one + one));;
-- : string = "2"
+
+But we could convert it to a string:
+
+```{code-cell} ocaml
+IntField.(one + one |> to_string)
+```
+
+We could even install a pretty printer to avoid having to manually call
+`to_string`:
+
+```{code-cell} ocaml
+let pp_intfield fmt i =
+  Format.fprintf fmt "%s" (IntField.to_string i);;
+
+#install_printer pp_intfield;;
+
+IntField.(one + one)
+```
+
+We could implement other kinds of fields, too:
+
+```{code-cell} ocaml
+module FloatField : Field = struct
+  type t = float
+  let zero = 0.
+  let one = 1.
+  let ( + ) = Stdlib.( +. )
+  let ( * ) = Stdlib.( *. )
+  let ( ~- ) = Stdlib.( ~-. )
+  let to_string = string_of_float
+end
 ```
