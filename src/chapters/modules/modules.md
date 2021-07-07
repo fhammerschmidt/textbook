@@ -110,6 +110,12 @@ module ListStack = struct
 end
 ```
 
+```{important}
+The specification of `pop` might surprise you. Note that it does not return the
+top element. That's the job of `peek`. Instead, `pop` returns all but the top
+element.
+```
+
 We can then use that module to manipulate a stack:
 
 ```{code-cell} ocaml
