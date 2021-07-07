@@ -21,6 +21,7 @@
   - file: chapters/basics/expressions.md
   - file: chapters/basics/functions.md
   - file: chapters/basics/documentation.md
+  - file: chapters/basics/printing.md
   - file: chapters/basics/debugging.md
   - file: chapters/basics/summary.md
   - file: chapters/basics/exercises.md

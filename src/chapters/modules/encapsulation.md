@@ -598,8 +598,7 @@ The `Format` module is what provides this functionality, and `Format.formatter`
 is an abstract type in it. You could think of a formatter as being a place to
 send output, like a file, and have it be automatically formatted along the way.
 The typical use of a formatter is as argument to a function such as
-`Format.fprintf`, which prints to the formatter using *format specifiers* like
-those found in C and many other languages.
+`Format.fprintf`, which like `Printf` uses format specifiers.
 
 For example, suppose you wanted to change how strings are printed by the
 toplevel and add " kupo" to the end of each string. Here's code that would do
@@ -609,10 +608,6 @@ it:
 let kupo_pp fmt s = Format.fprintf fmt "%s kupo" s;;
 #install_printer kupo_pp;;
 ```
-
-The format specifier `"%s kupo"` means: insert the next argument after it as a
-string in place of `%s`. The language of format specifiers is quite rich; we
-won't cover it here, but you can consult the manual.
 
 Now you can see that the toplevel adds " kupo" to each string while printing it,
 even though it's not actual a part of the original string:
