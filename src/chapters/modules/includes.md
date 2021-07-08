@@ -13,7 +13,7 @@ kernelspec:
   name: ocaml-jupyter
 ---
 
-# Code Reuse with Includes
+# Includes
 
 Copying and pasting code is almost always a bad idea. Duplication of code causes
 duplication and proliferation of errors. So why are we so prone to making this
