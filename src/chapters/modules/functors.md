@@ -1,8 +1,8 @@
 # Functors
 
 The problem we were having in the previous section was that we wanted
-to add code to two different modules, but that code needed to 
-be parameterized on the details of the module to which it was being 
+to add code to two different modules, but that code needed to
+be parameterized on the details of the module to which it was being
 added.  It's that kind of parameterization that is enabled by
 an OCaml language feature called *functors*.
 
@@ -75,11 +75,10 @@ have any value named `x`.  In fact, `MakeY` completely ignores its
 input structure.
 
 **Why "functor"?** In [category theory][intellectualterrorism], a *category*
-contains *morphisms*, which are a generalization of functions as we 
+contains *morphisms*, which are a generalization of functions as we
 known them, and a *functor* is map between categories.  Likewise, OCaml
 structures contain functions, and OCaml functors map from structures
 to structures.  For more information about category theory,
 take CS 6117.
 
 [intellectualterrorism]: https://en.wikipedia.org/wiki/Category_theory
-
