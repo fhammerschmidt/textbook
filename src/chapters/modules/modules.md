@@ -240,6 +240,20 @@ module M = struct
 end
 ```
 
+Structures can also be written on a single line, with optional `;;` between
+items for readability:
+
+```{code-cell} ocaml
+module N = struct let x = 0 let y = 1 end
+module O = struct let x = 0;; let y = 1 end
+```
+
+An empty structure is permitted:
+
+```{code-cell} ocaml
+module E = struct end
+```
+
 **Dynamic semantics.**
 
 We already know that expressions are evaluated to values. Similarly, a module
@@ -546,7 +560,9 @@ end
 ```
 
 where `specifications` inside a signature can include `val` declarations, type
-definitions, exception definitions, and nested `module type` definitions.
+definitions, exception definitions, and nested `module type` definitions. Like
+structures, a signature can be written on many lines or just one line, and the
+empty signature `sig end` is allowed.
 
 But, as we saw with module definitions, a more accurate version of the syntax
 would be:
@@ -909,9 +925,13 @@ guarantees:
 
 ## First-Class Modules
 
-Modules are not as first-class in OCaml as functions. There are some language
-extensions that make it possible to bundle up modules as first-class values, but
-we won't be studying them. If you're curious you can have a look at
+Modules are not as first-class in OCaml as functions. But it is possible to
+*package* modules as first-class values. Briefly:
+
+- `(module M : T)` packages module `M` with module type `T` into a value.
+- `(val e : T)` un-packages `e` into a module with type `T`.
+
+We won't cover this any further, but if you're curious you can have a look at
 [the manual][firstclassmodules].
 
 [firstclassmodules]: https://ocaml.org/manual/firstclassmodules.html
