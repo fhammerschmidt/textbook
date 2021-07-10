@@ -19,6 +19,9 @@ html:
 html-strict:
 	jupyter-book build -W ${BOOK}
 
+linkcheck:
+	jupyter-book build ${BOOK} --builder linkcheck
+
 view:
 	open ${HTML}/index.html
 

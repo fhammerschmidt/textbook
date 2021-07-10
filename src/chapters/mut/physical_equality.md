@@ -10,7 +10,7 @@ equality.  The [documentation][stdlib] of `Stdlib.(==)` explains physical equali
 > implementation-dependent; however, it is guaranteed that `e1 == e2` implies 
 > `compare e1 e2 = 0`.
 
-[stdlib]: http://ocaml.org/api/Stdlib.html
+[stdlib]: https://ocaml.org/api/Stdlib.html
 
 One interpretation could be that `==` should be used only when comparing refs
 (and other mutable data types) to see whether they point to the same location in 
