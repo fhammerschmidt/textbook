@@ -68,4 +68,4 @@ implemented not in OCaml but in the OCaml run-time, which is implemented
 mostly in C. But the functions do behave the same as the OCaml source
 given above in comments.
 
-[stdlib]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Stdlib.html
+[stdlib]: http://ocaml.org/api/Stdlib.html

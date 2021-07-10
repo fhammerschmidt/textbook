@@ -53,7 +53,7 @@ with a functor.
 For the following exercises, consult the [documentation of
 `Hashtbl`][hashtbl].
 
-[hashtbl]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html 	
+[hashtbl]: http://ocaml.org/api/Hashtbl.html 	
 
 ##### Exercise: hashtbl usage  [&#10029;&#10029;] 
 
@@ -212,7 +212,7 @@ was used for ordering.)  Reimplement the `BstSet` abstraction as a
 functor parameterized on a structure that enables client-provided
 comparison operator(s), much like the [standard library `Set`][stdlib-set]. 
 
-[stdlib-set]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Set.html
+[stdlib-set]: http://ocaml.org/api/Set.html
 
 &square;
 

@@ -15,7 +15,7 @@ improved support for debugging generated parsers.
 
 [lex]: https://en.wikipedia.org/wiki/Lex_(software)
 [yacc]: https://en.wikipedia.org/wiki/Yacc
-[ocamllexyacc]: http://caml.inria.fr/pub/docs/manual-ocaml/lexyacc.html
+[ocamllexyacc]: http://ocaml.org/manual/lexyacc.html
 [menhir]: http://gallium.inria.fr/~fpottier/menhir/
 
 ## Lexers

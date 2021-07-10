@@ -17,7 +17,7 @@ pseudorandom number generators (PRNGs). So does OCaml in the standard library's
 [prng]: https://en.wikipedia.org/wiki/Pseudorandom_number_generator
 [java-random]: https://docs.oracle.com/javase/8/docs/api/java/util/Random.html
 [python-random]: https://docs.python.org/3/library/random.html
-[random]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Random.html
+[random]: http://ocaml.org/api/Random.html
 
 ## An Experiment
 

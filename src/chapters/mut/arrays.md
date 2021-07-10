@@ -27,7 +27,7 @@ syntax `array.(index)`, where the parentheses are mandatory.
 
 The [`Array` module][array] has many useful functions on arrays.
 
-[array]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Array.html
+[array]: http://ocaml.org/api/Array.html
 
 ## Syntax and Semantics
 
@@ -89,6 +89,6 @@ used in conjunction with mutable features like arrays&mdash;typically,
 The ["Expressions" page][expr] of
 OCaml manual contains the syntax and semantics of loops.
 
-[expr]: http://caml.inria.fr/pub/docs/manual-ocaml/expr.html
+[expr]: http://ocaml.org/manual/expr.html
 
 

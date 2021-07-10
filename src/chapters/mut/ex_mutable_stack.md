@@ -141,4 +141,4 @@ them further.  If you would like to learn more, read Section 2 of
 or [this section][weak] of the OCaml manual.
 
 [relaxing]: https://caml.inria.fr/pub/papers/garrigue-value_restriction-fiwflp04.pdf
-[weak]: https://caml.inria.fr/pub/docs/manual-ocaml/polymorphism.html
+[weak]: https://ocaml.org/manual/polymorphism.html

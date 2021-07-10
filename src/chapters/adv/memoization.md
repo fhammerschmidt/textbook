@@ -392,5 +392,5 @@ algorithm works. Memoization can be seen as an instance of the
 extremely useful algorithmic technique called dynamic programming,
 which you will see in CS 4820.
 
-[hash]: http://caml.inria.fr/pub/docs/manual-ocaml/libref/Hashtbl.html
+[hash]: http://ocaml.org/api/Hashtbl.html
 
