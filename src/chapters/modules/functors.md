@@ -746,8 +746,8 @@ everything from that set (because of the `include`) as well as a new function
 When we apply the functor, we get a very nice set module:
 
 ```{code-cell} ocaml
-module OfList = SetWithOfList (ListSet)
-module UniqOfList = SetWithOfList (UniqListSet)
+module SetL = SetWithOfList (ListSet)
+module UniqSetL = SetWithOfList (UniqListSet)
 ```
 
 Notice how the output structure records the fact that its type `t` is the same
