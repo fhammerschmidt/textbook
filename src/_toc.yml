@@ -66,5 +66,5 @@
   - file: chapters/modules/compilation_units.md
   - file: chapters/modules/includes.md
   - file: chapters/modules/functors.md
-  # - file: chapters/modules/summary.md
-  # - file: chapters/modules/exercises.md
+  - file: chapters/modules/summary.md
+  - file: chapters/modules/exercises.md

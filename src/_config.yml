@@ -7,6 +7,15 @@ copyright: "2021"
 logo: lambda-light.png
 only_build_toc_files: true
 
+sphinx:
+  config:
+    # Specifying the language can improve accessibility in screen readers
+    # and translators
+    language: en
+    # All files from these paths will be included in the generated
+    # HTML output, even if they are not linked from any page
+    html_extra_path: ['assets']
+
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
@@ -66,6 +75,7 @@ parse:
       Solutions to exercises are available to students in Cornell's CS 3110.
       Instructors at other institutions are welcome to contact Michael Clarkson
       for access.
+    code_link: '<a href="../../code/%%NAME%%">%%NAME%%</a>'
   # Extensions to enable in the myst parser. See
   # https://myst-parser.readthedocs.io/en/latest/using/syntax-optional.html
   myst_enable_extensions:

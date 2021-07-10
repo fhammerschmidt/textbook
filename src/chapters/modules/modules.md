@@ -122,6 +122,17 @@ We can then use that module to manipulate a stack:
 ListStack.push 2 (ListStack.push 1 ListStack.empty)
 ```
 
+```{warning}
+There's a common confusion lurking here for those programmers coming from
+object-oriented languages. It's tempting to think of `ListStack` as being an
+object on which you invoke methods. Indeed `ListStack.push` vaguely looks like
+we're invoking a `push` method on a `ListStack` object. But that's not what is
+happening. In an OO language you could instantiate many stack objects. But here,
+there is only one `ListStack`. Moreover it is not an object, in large part
+because it has no notion of a `this` or `self` keyword to denote the receiving
+object of the method call.
+```
+
 That's admittedly rather verbose code. Soon we'll see several solutions to that
 problem, but for now here's one:
 
@@ -141,12 +152,10 @@ Now we can read the code left-to-right without having to parse parentheses.
 Nice.
 
 ```{warning}
-There's a common confusion lurking here for those programmers coming from
-object-oriented languages. It's tempting to think of `ListStack` as being a
-class from which objects are instantiated. That's not the case though. Notice
-how there is no `new` operator used to create a stack above, nor any
-constructors (in the OO sense of that word), nor any methods with a `this`
-keyword to denote the receiving object of the method call.
+There's another common OO confusion lurking here. It's tempting to think of
+`ListStack` as being a class from which objects are instantiated. That's not the
+case though. Notice how there is no `new` operator used to create a stack above,
+nor any constructors (in the OO sense of that word).
 ```
 
 Modules are considerably more basic than classes. A module is just a collection
