@@ -10,9 +10,9 @@
   - file: chapters/intro/past.md
   - file: chapters/intro/present.md
   - file: chapters/intro/future.md
+  - file: chapters/intro/about.md
   - file: chapters/intro/3110.md
   - file: chapters/intro/summary.md
-  - file: chapters/intro/exercises.md
 
 - file: chapters/basics/intro.md
   sections:

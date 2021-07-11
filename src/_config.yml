@@ -36,12 +36,12 @@ repository:
   path_to_book: src  # Optional path to your book, relative to the repository root
   branch: jupyter  # Which branch of the repository should be used when creating links (optional)
 
-launch_buttons:
+#launch_buttons:
   # Disable binder launch for now.  The public binderhub runs Ubuntu 18 which
   # does not have OPAM 2, so we can't easily create an OCaml kernel for it.
   # The only current alternative seems to be creating our own custom Dockerfile.
   # Delete the line below to restore the binder launch button.
-  binderhub_url: ""
+  #binderhub_url: ""
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
