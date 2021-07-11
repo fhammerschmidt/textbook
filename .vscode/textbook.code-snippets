@@ -70,5 +70,17 @@
 			"  name: ocaml-jupyter",
 			"---",
 		]
+	},
+	"Video Embed": {
+		"scope": "markdown",
+		"prefix": [
+			"ve",
+			"video",
+			"video_embed",
+			"video-embed"
+		],
+		"body": [
+			"{{ video_embed | replace(\"%%VID%%\", \"$1\")}}"
+		],
 	}
 }
