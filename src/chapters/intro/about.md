@@ -53,6 +53,48 @@ groups to share your annotations, or share them publicly. Check out these
 [hypothesis]: https://web.hypothes.is/
 [tips]: https://web.hypothes.is/annotation-tips-for-students/
 
+**Executable Code.** Many pages of this book have OCaml code embedded in them.
+The output of that code is already shown in the book. Here's an example:
+
+```{code-cell} ocaml
+print_endline "Hello world!"
+```
+
+You can also edit and re-run the code yourself to experiment and check your
+understanding.  Look for the icon near the top right of the page that looks
+like a rocket ship.  In the drop-down menu you'll find two ways to interact
+with the code:
+
+- *Binder* will launch the site [mybinder.org], which is a free cloud-based
+  service for "reproducible, interactive, sharable environments for science at
+  scale." All the computation happens in their cloud servers, but the UI is
+  provided through your browser. It will take a little while for the textbook
+  page to open in Binder. Once it does, you can edit and run the code in a
+  [*Jupyter notebook*][jupyter]. Jupyter notebooks are documents (usually ending
+  in the `.ipynb` extension) that can be viewed in web browsers and used to
+  write narrative content as well as code. They became popular in data science
+  communities (especially Python, R, and Julia) as a way of sharing analyses.
+  Now many languages can run in Jupyter notebooks, including OCaml. Code and
+  text are written in *cells* in a Jupyter notebook. Look at the "Cell" menu in
+  it for commands to run cells. Note that Shift-Enter is usually a hotkey for
+  running the cell that has focus.
+
+- *Live code* will actually do about the same thing, except that instead of
+  leaving the current textbook page and taking you off to Binder, it will modify
+  the code cells on the page to be editable. It takes some time for the
+  connection to be made behind the scenes, during which you will see "Waiting
+  for kernel". After the connection has been made, you can edit all the code
+  cells on the page and re-run them.
+
+Try interacting with the cell above now to make it print `"Camels are bae."`
+
+```{tip}
+When you write "real" OCaml code, this is not the interface you'll be using.
+You'll write code in an editor such as Visual Studio Code or Emacs, and you'll
+compile it from a terminal. Binder and Live Code are just for interacting in a
+seamless with the textbook.
+```
+
 **Downloadable Pages.** Each page of this book is downloadable in a variety of
 formats. The download icon is at the top right of each page. You'll always find
 the original source code of the page, which is usually [Markdown][md]&mdash;or
@@ -61,30 +103,13 @@ technical writing. Each page is also individually available as PDF, which simply
 prints from your browser. For the entire book as a PDF, see the paragraph about
 that below.
 
-Pages with OCaml code cells embedded in them, such as the one below, can also be
-downloaded as [Jupyter notebooks][jupyter].
-
-```{code-cell} ocaml
-print_endline "Hello world!"
-```
-
-Jupyter notebooks are documents (usually ending in the `.ipynb` extension) that
-can be opened in your web browser and used to write narrative content as well as
-code. They became popular in data science communities (especially Python, R, and
-Julia) as a way of sharing analyses. Now many languages can run in Jupyter
-notebooks, including OCaml.
-
-To use Jupyter notebooks locally on your own machine, you'll need to install
-Jupyter. The easiest way of doing that is typically to install
-[Anaconda][anaconda]. Then you'll need to install
+Pages with OCaml code cells embedded in them can also be downloaded as Jupyter
+notebooks. To run those locally on your own machine (instead of in the cloud on
+Binder), you'll need to install Jupyter. The easiest way of doing that is
+typically to install [Anaconda][anaconda]. Then you'll need to install
 [OCaml Jupyter][ocaml-jupyter], which requires that you already have OCaml
-installed.
-
-To be clear, there's no need to install Jupyter or to use notebooks. But it's a
-nice way to interact with the code if you're wondering what would happen if you
-were to tweak some of the example code provided in the textbook. Instead of
-having to copy and paste all the code from a page into an OCaml file, you can
-just fire up the notebook and start tweaking the code.
+installed. To be clear, there's no need to install Jupyter or to use notebooks.
+It's just another way to interact with this textbook beyond reading it.
 
 [md]: https://en.wikipedia.org/wiki/Markdown
 [myst]: https://myst-parser.readthedocs.io/en/latest/

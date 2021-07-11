@@ -36,9 +36,11 @@ repository:
   path_to_book: src  # Optional path to your book, relative to the repository root
   branch: jupyter  # Which branch of the repository should be used when creating links (optional)
 
-# To disable binder launch, uncomment the next two lines.
-# launch_buttons:
-#   binderhub_url: ""
+launch_buttons:
+  thebe: true
+  # To disable Binder launch, comment out the Thebe line above and uncomment
+  # the binderhub_url line below.
+  # binderhub_url: ""
 
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
