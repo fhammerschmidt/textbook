@@ -13,7 +13,7 @@ RUN sudo -E apt-get upgrade -y
 RUN sudo -E apt-get -y install pkg-config m4 zlib1g-dev python3-pip libcairo2-dev libgmp-dev libzmq3-dev
 
 # Install Jupyter
-RUN sudo -E pip3 install notebook nbgitpuller
+RUN sudo -E pip3 install notebook nbgitpuller jupytext
 
 # Install the OCaml Jupyter kernel and packages
 RUN opam update -y
