@@ -1,3 +1,4 @@
+-- https://pandoc.org/lua-filters.html
 -- counts words in a document
 
 words = 0
@@ -14,11 +15,6 @@ wordcount = {
     _,n = el.text:gsub("%S+","")
     words = words + n
   end,
-
-  -- CodeBlock = function(el)
-  --   _,n = el.text:gsub("%S+","")
-  --   words = words + n
-  -- end
 }
 
 function Pandoc(el)

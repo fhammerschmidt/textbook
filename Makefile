@@ -39,7 +39,7 @@ wc:
 	find src/chapters -type f -name "*.md" -exec cat {} \; | pandoc -f commonmark -t plain | wc -w
 
 wcl:
-	find -E src/chapters -type f -name "*.md" -exec cat {} \; | pandoc --lua-filter wordcount.lua
+	find -E src/chapters -type f -name "*.md" -exec pandoc --lua-filter wordcount.lua {} \; | awk '{s+=$$1} END {print s}'
 
 ccl:
-	find -E src/chapters -type f -name "*.md" -exec cat {} \; | pandoc --lua-filter codecount.lua
+	find -E src/chapters -type f -name "*.md" -exec pandoc --lua-filter codecount.lua {} \; | awk '{s+=$$1} END {print s}'
