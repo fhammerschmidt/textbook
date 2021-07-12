@@ -36,4 +36,10 @@ deploy: html pdf
 	  && ghp-import -n -p -f ${HTML} -r ${REMOTE} -m "Update textbook"
 
 wc:
-	find src/chapters -type f -name "*.md" -exec pandoc -f commonmark -t plain {} \; | wc -w
+	find src/chapters -type f -name "*.md" -exec cat {} \; | pandoc -f commonmark -t plain | wc -w
+
+wcl:
+	find -E src/chapters -type f -name "*.md" -exec cat {} \; | pandoc --lua-filter wordcount.lua
+
+ccl:
+	find -E src/chapters -type f -name "*.md" -exec cat {} \; | pandoc --lua-filter codecount.lua
