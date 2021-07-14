@@ -68,3 +68,11 @@
   - file: chapters/modules/functors.md
   - file: chapters/modules/summary.md
   - file: chapters/modules/exercises.md
+
+- file: chapters/doctest/intro.md
+  sections:
+  - file: chapters/doctest/specifications.md
+  - file: chapters/doctest/function_docs.md
+  - file: chapters/doctest/module_docs.md
+  # - file: chapters/doctest/summary.md
+  # - file: chapters/doctest/exercises.md
