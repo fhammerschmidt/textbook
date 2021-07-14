@@ -165,7 +165,7 @@ This loss of information is described by the *abstraction function*, which is a
 mapping from the space of concrete values to the abstract space. The abstraction
 function for the implementation `ListSet` looks like this:
 
-![](abst-fcn2.gif)
+![af-listset](abst-fcn2.png)
 
 Notice that several concrete values may map to a single abstract value;
 that is, the abstraction function may be *many-to-one*. It is also
@@ -269,7 +269,7 @@ every operation that takes place in the concrete space makes sense when mapped
 by the abstraction function into the abstract space. This can be visualized as a
 *commutative diagram*:
 
-![](commutation.gif)
+![commutative-diagram](commutation.png)
 
 A commutative diagram means that if we take the two paths around the diagram, we
 have to get to the same place. Suppose that we start from a concrete value and
@@ -341,7 +341,7 @@ constraint is broken, functions such as `size` will not return the correct
 answer. The relationship between the representation invariant and the
 abstraction function is depicted in this figure:
 
-![](ri-af.png)
+![af-and-ri](ri-af.png)
 
 We can use the rep invariant and abstraction function to judge whether the
 implementation of a single operation is correct *in isolation from the rest of
