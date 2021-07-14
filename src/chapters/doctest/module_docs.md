@@ -15,6 +15,8 @@ kernelspec:
 
 # Module Documentation
 
+{{ video_embed | replace("%%VID%%", "4OTspWNefn4")}}
+
 The specification of functions provided by a module can be found in its
 interface, which is what clients will consult. But what about *internal*
 documentation, which is relevant to those who implement and maintain a module?
@@ -81,7 +83,11 @@ end
 
 In a real signature for sets, we'd want operations such as `map` and `fold` as
 well, but let's omit these for now for simplicity. There are many ways to
-implement this abstraction. As we've seen before, one easy way is as a list:
+implement this abstraction.
+
+{{ video_embed | replace("%%VID%%", "abtrrowewaw")}}
+
+As we've seen before, one easy way is as a list:
 
 ```{code-cell} ocaml
 (** Implementation of sets as lists with duplicates *)
@@ -106,6 +112,8 @@ Notice that the types of the functions do not need to be written down in the
 implementation. They aren't needed because they're already present in the
 signature, just like the specifications that are also in the signature don't
 need to be replicated in the structure.
+
+{{ video_embed | replace("%%VID%%", "n8irzSGGVao")}}
 
 Here is another implementation of `Set` that also uses `'a list` but requires
 the lists to contain no duplicates. This implementation is also correct (and
@@ -140,6 +148,8 @@ implementation: the *abstraction function* and the *representation invariant*
 for the abstract data type. We turn to discussion of those, next.
 
 ## Abstraction Functions
+
+{{ video_embed | replace("%%VID%%", "ZYYa66804Q4")}}
 
 The client of any `Set` implementation should not be able to distinguish it from
 any other implementation based on its functional behavior. As far as the client
@@ -200,6 +210,8 @@ end
 
 ## Implementing the Abstraction Function
 
+{{ video_embed | replace("%%VID%%", "ebcnwXuWPI0")}}
+
 What would it mean to implement the abstraction function for `ListSet`? We'd
 want a function that took an input of type `'a ListSet.t`. But what should its
 output type be? The abstract values are mathematical sets, not OCaml types. If
@@ -249,6 +261,8 @@ toplevel rather than other code, programatically.
 
 ## Commutative Diagrams
 
+{{ video_embed | replace("%%VID%%", "PKAgq97NBdg")}}
+
 Using the abstraction function, we can now talk about what it means for an
 implementation of an abstraction to be *correct*. It is correct exactly when
 every operation that takes place in the concrete space makes sense when mapped
@@ -273,6 +287,8 @@ commutative diagram requires that in this instance the union of {1, 3} and {2}
 is {1, 2, 3}, which is of course true.
 
 ## Representation Invariants
+
+{{ video_embed | replace("%%VID%%", "mEtR4YGMRPY")}}
 
 The abstraction function explains how information within the module is viewed
 abstractly by module clients. But that is not all we need to know to ensure
@@ -350,6 +366,8 @@ input values, then it should hold for the output values, which is why we call it
 an *invariant*.
 
 ## Implementing the Representation Invariant
+
+{{ video_embed | replace("%%VID%%", "4bfh_aONcRc")}}
 
 When implementing a complex abstract data type, it is often helpful to write an
 internal function that can be used to check that the rep invariant holds of a

@@ -1,5 +1,7 @@
 # Specifications
 
+{{ video_embed | replace("%%VID%%", "ehe96Xnkjys")}}
+
 A *specification* is a contract between a *client* of some unit of code and the
 *implementer* of that code. The most common place we find specifications is as
 comments in the interface (`.mli`) files for a module. There, the implementer of

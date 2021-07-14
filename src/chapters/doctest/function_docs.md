@@ -18,6 +18,8 @@ kernelspec:
 *This section continues the discussion of
 [documentation](../basics/documentation), which we began in chapter 2.*
 
+{{ video_embed | replace("%%VID%%", "ggm5rjAyjhw")}}
+
 A specification is written for humans to read, not machines. "Specs" can take
 time to write well, and it is time well spent. The main goal is clarity. It is
 also important to be concise, because client programmers will not always take
@@ -29,6 +31,8 @@ A well-written specification usually has several parts communicating different
 kinds of information about the thing specified. If we know what the usual
 ingredients of a specification are, we are less likely to forget to write down
 something important. Let's now look at a recipe for writing specifications.
+
+{{ video_embed | replace("%%VID%%", "p5OTwjNTQIs")}}
 
 ## Returns Clause
 
