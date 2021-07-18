@@ -74,5 +74,8 @@
   - file: chapters/doctest/specifications.md
   - file: chapters/doctest/function_docs.md
   - file: chapters/doctest/module_docs.md
+  - file: chapters/doctest/test_debug.md
+  - file: chapters/doctest/black_glass_box.md
+  - file: chapters/doctest/randomized.md
   # - file: chapters/doctest/summary.md
   # - file: chapters/doctest/exercises.md

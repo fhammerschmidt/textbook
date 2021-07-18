@@ -27,7 +27,7 @@ Manual option:
   `opam switch create textbook ocaml-base-compiler.4.11.1`
 - Install Ocaml-Jupyter with `opam install jupyter`.
 - Also install the packages needed by the textbook:
-  `opam install ounit2`.
+  `opam install ounit2 qcheck`.
 - Run `ocaml-jupyter-opam-genspec`. Note in the output where it generated
   the kernelspec. Edit that file and change the `display_name` to just "OCaml".
   **That's important.** The display name will be hardcoded in each chapter
