@@ -152,3 +152,6 @@ for Princeton COS 326 by David Walker et al.
 
 Our example algebraic specifications are based on McCloskey's. The terminology
 of "generator", "manipulator", and "query" is based on Pfleeger and Atlee.
+
+Many of our exercises on formal methods are inspired by *Software Foundations*,
+volume 1.

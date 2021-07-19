@@ -66,6 +66,8 @@ them to reason about the correctness of implementations.
 
 ## Example: Stacks
 
+{{ video_embed | replace("%%VID%%", "Pyz2xEzD2cY")}}
+
 Here are a few familiar operations on stacks along with their types.
 
 ```{code-cell} ocaml
@@ -159,6 +161,8 @@ here's a proof of equation 3:
 ```
 
 ## Example: Queues
+
+{{ video_embed | replace("%%VID%%", "lAJz6ZnsbNI")}}
 
 Stacks were easy.  How about queues?  Here is the specification:
 

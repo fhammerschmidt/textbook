@@ -26,6 +26,8 @@ core idea is completely the same.
 
 ## Induction on Naturals
 
+{{ video_embed | replace("%%VID%%", "Lkb-eTUrHTs")}}
+
 We used OCaml's `int` type as a representation of the naturals. Of course, that
 type is somewhat of a mismatch: negative `int` values don't represent naturals,
 and there is an upper bound to what natural numbers we can represent with `int`.
@@ -166,6 +168,8 @@ QED
 
 ## Induction on Lists
 
+{{ video_embed | replace("%%VID%%", "Xo3rW_dTqEg")}}
+
 It turns out that natural numbers and lists are quite similar, when viewed
 as data types.  Here are the definitions of both, aligned for comparison:
 
@@ -250,6 +254,9 @@ Show: forall ys zs, (h :: t) @ (ys @ zs) = ((h :: t) @ ys) @ zs
 
 QED
 ```
+
+{{ video_embed | replace("%%VID%%", "4B2jF2zHSCs")}}
+
 
 ## A Theorem about Folding
 
@@ -449,6 +456,8 @@ associative operator causes `fold_left` and `fold_right` to get the same answer.
 
 ## Induction on Trees
 
+{{ video_embed | replace("%%VID%%", "UJyE8ylHFA0")}}
+
 Lists and binary trees are similar when viewed as data types.  Here are the
 definitions of both, aligned for comparison:
 
@@ -551,6 +560,8 @@ Induction on trees is really no more difficult than induction on lists or
 natural numbers. Just keep track of the inductive hypotheses, using our stylized
 proof notation, and it isn't hard at all.
 
+{{ video_embed | replace("%%VID%%", "aiJDQeWL2G0")}}
+
 ## Induction Principles for All Variants
 
 We've now seen induction principles for `nat`, `list`, and `tree`. Generalizing
@@ -602,3 +613,24 @@ There are two base cases, corresponding to the two constructors that don't carry
 an `expr`. There are two inductive cases, corresponding to the two constructors
 that do carry `expr`s. `Unop` gets one IH, whereas `Binop` gets two IHs, because
 of the number of `expr`s that each carries.
+
+## Induction and Recursion
+
+{{ video_embed | replace("%%VID%%", "J-x9hcNqRhY")}}
+
+Inductive proofs and recursive programs bear a striking similarity. In a sense,
+an inductive proof *is* a recursive program that shows how to construct evidence
+for a theorem involving an algebraic data type (ADT). The **structure** of an ADT determines the structure of proofs and programs:
+
+- The **constructors** of an ADT are the organizational principle of both proofs
+  and programs. In a proof, we have a base or inductive case for each
+  constructor. In a program, we have a pattern-matching case for each
+  constructor.
+
+- The use of **recursive types** in an ADT determine where recursion occurs in
+  both proofs and programs. By "recursive type", we mean the occurrence of the
+  type in its own definition, such as the second `'a list` in
+  `type 'a list = [] | ( :: ) 'a * 'a list`. Such occurrences lead to "smaller"
+  values of a type occurring inside larger values. In a proof, we apply the
+  inductive hypothesis upon reaching such a smaller value. In a program, we
+  recurse on the smaller value.

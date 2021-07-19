@@ -15,6 +15,8 @@ kernelspec:
 
 # Proving Correctness
 
+{{ video_embed | replace("%%VID%%", "48GBq4koKPs")}}
+
 Testing provides evidence of correctness, but not full assurance. Even after
 extensive black-box and glass-box testing, maybe there's still some test case
 the programmer failed to invent, and that test case would reveal a fault in the
@@ -51,7 +53,9 @@ let rec fact n = ...
 ```
 
 The postcondition is asserting an equality between the output of the function
-and some English description of a computation on the input.
+and some English description of a computation on the input. *Formal
+verification* is the task for proving that the implementation of the function
+satisfies its specification.
 
 Equalities are one of the fundamental ways we think about correctness of
 functional programs. The absence of mutable state makes it possible to reason
@@ -60,6 +64,8 @@ that in an imperative language, because those expressions might have side
 effects that change the state.
 
 ## Equality
+
+{{ video_embed | replace("%%VID%%", "zjDUrMdVC5U")}}
 
 When are two expressions equal?  Two possible answers are:
 
@@ -97,6 +103,8 @@ We're also going to restrict ourselves to expressions that are well typed, pure
 exceptions or infinite loops).
 
 ## Equational Reasoning
+
+{{ video_embed | replace("%%VID%%", "MjpZJA1jIqU")}}
 
 Consider these functions:
 
@@ -169,6 +177,8 @@ and
 
 ## Induction on Natural Numbers
 
+{{ video_embed | replace("%%VID%%", "By4VSmpzuHw")}}
+
 The following function sums the non-negative integers up to `n`:
 
 ```{code-cell} ocaml
@@ -193,6 +203,8 @@ forall properties P,
 That is called the *induction principle* for natural numbers. The *base case* is
 to prove `P(0)`, and the *inductive case* is to prove that `P(k + 1)` holds
 under the assumption of the *inductive hypothesis* `P(k)`.
+
+{{ video_embed | replace("%%VID%%", "JRNxlQYOLyw")}}
 
 Let's use induction to prove the correctness of `sumto`.
 
@@ -258,6 +270,8 @@ efficiency, then prove that a better implementation is equal to the original.
 
 Let's do another example of this kind of verification. This time, well use the
 factorial function.
+
+{{ video_embed | replace("%%VID%%", "htMNllWnLzg")}}
 
 The simple, obviously correct implementation of factorial would be:
 
@@ -548,6 +562,8 @@ let sumto_tr = sumto_i 0
 We already know that `sumto_tr` is correct, thanks to our theorem.
 
 ## Termination
+
+{{ video_embed | replace("%%VID%%", "Xy7GTfEfIK4")}}
 
 Sometimes correctness of programs is further divided into:
 
