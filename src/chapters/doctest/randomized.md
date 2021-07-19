@@ -72,7 +72,7 @@ does OCaml in the standard library's [`Random` module][random].
 # Random.int 100;;
 ```
 
-Each response will be an integer $i$ such that $0 \leq i \lt 100$.
+Each response will be an integer $i$ such that $0 \leq i < 100$.
 
 Now quit utop and start another new session. Enter the same phrases again. You
 will get the same responses as last time. In fact, unless your OCaml

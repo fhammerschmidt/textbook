@@ -67,7 +67,7 @@ arguments. How should we go about selecting a relatively small number of test
 cases that will convince us that the function works correctly on all possible
 inputs? We can visualize the space of all possible inputs as a large square:
 
-![](create_inputs.gif)
+![](create_inputs.png)
 
 There are about $2^{126}$ points in this square, so we can't afford to test them
 all. And testing them all is going to mostly be a waste of time&mdash;most of
