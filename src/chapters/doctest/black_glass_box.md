@@ -15,6 +15,8 @@ kernelspec:
 
 # Black-box and Glass-box Testing
 
+{{ video_embed | replace("%%VID%%", "W8FEhZIpYCg")}}
+
 We would like to know that a program works on all possible inputs. The problem
 with testing is that it is usually infeasible to try all the possible inputs.
 For example, suppose that we are implementing a module that provides an abstract
@@ -84,7 +86,11 @@ program inputs.
 Two good ways of achieving coverage are *black-box testing* and *glass-box
 testing*. We discuss those, next.
 
+{{ video_embed | replace("%%VID%%", "PmfQ9xS2YhQ")}}
+
 ## Black-box Testing
+
+{{ video_embed | replace("%%VID%%", "2GjVqe9IKEk")}}
 
 In selecting our test cases for good coverage, we might want to consider both
 the specification and the implementation of the program or module being tested.
@@ -244,6 +250,8 @@ the data abstraction handles every path through each producer of it. In the
 
 ## Glass-box Testing
 
+{{ video_embed | replace("%%VID%%", "128hYUobA_g")}}
+
 Black-box testing is a good place to start when writing test cases, but
 ultimately it is not enough. In particular, it's not possible to determine how
 much coverage of the implementation a black-box test suite actually
@@ -328,6 +336,8 @@ The disadvantage of black box testing is that its coverage may not be as
 high as we'd like, because it has to work without the implementation.
 
 ## Bisect
+
+{{ video_embed | replace("%%VID%%", "efAvB6KuHLY")}}
 
 Glass-box testing can be aided by *code-coverage tools* that assess how much of
 the code has been exercised by a test suite. The [bisect_ppx][] tool for OCaml

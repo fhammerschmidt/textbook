@@ -1,5 +1,7 @@
 # Testing and Debugging
 
+{{ video_embed | replace("%%VID%%", "Rgo-T6gF9cA")}}
+
 Correct programs behave as we intend them to behave. *Validation* is the process
 of building our confidence in correct program behavior.
 
@@ -83,6 +85,8 @@ correct program behavior.
 
 ## Debugging
 
+{{ video_embed | replace("%%VID%%", "zF3updL6EkM")}}
+
 When testing reveals an error, we usually say that the program is "buggy". But
 the word "bug" suggests something that wandered into a program. Better
 terminology would be that there are
@@ -101,6 +105,8 @@ task that takes even more time than an original implementation itself! So you
 would do well to make it easy to debug your programs from the start. Write good
 specifications for each function. Document the AF and RI for each data
 abstraction. Keep modules small, and test them independently.
+
+{{ video_embed | replace("%%VID%%", "4dp6ODe4MH4")}}
 
 Inevitably, though, you will discover faults in your programs. When you do,
 approach them as a scientist by employing the *scientific method:*

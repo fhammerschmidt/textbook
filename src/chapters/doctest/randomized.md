@@ -15,6 +15,8 @@ kernelspec:
 
 # Randomized Testing with QCheck
 
+{{ video_embed | replace("%%VID%%", "62SYeSlSCNM")}}
+
 *Randomized testing* aka *fuzz testing* is the process of generating random
 inputs and feeding them to a program or a function to see whether the program
 behaves correctly. The immediate issue is how to determine what the correct
