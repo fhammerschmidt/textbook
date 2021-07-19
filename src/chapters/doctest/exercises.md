@@ -1,11 +1,13 @@
 # Exercises
 
-##### Exercise: spec game [&#10029;&#10029;&#10029;] 
+{{ solutions }}
 
-Pair up with another programmer and play the specification
-game with them.  Take turns being the specifier and
-the devious programmer.  Here are some suggested functions
-you could use:
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "spec game")}}
+
+Pair up with another programmer and play the specification game with them. Take
+turns being the specifier and the devious programmer. Here are some suggested
+functions you could use:
 
  - `num_vowels : string -> int`
  - `is_sorted : 'a list -> bool`
@@ -15,136 +17,146 @@ you could use:
  - `is_palindrome : string -> bool`
  - `second_largest : int list -> int`
  - `depth : 'a tree -> int`
- 
-&square;
 
-##### Exercise: poly spec [&#10029;&#10029;&#10029;] 
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "poly spec")}}
 
-Let's create a *data abstraction* (a module that represents some kind
-of data) for single-variable integer polynomials of the form 
+Let's create a data abstraction for single-variable integer polynomials of the
+form
 
 $$
 c_n x^n + \ldots + c_1 x + c_0.
 $$
 
-Let's assume that the polynomials
-are *dense*, meaning that they contain very few coefficients that are zero.
-Here is an incomplete interface for polynomials:
-```
+Let's assume that the polynomials are *dense*, meaning that they contain very
+few coefficients that are zero. Here is an incomplete interface for polynomials:
+
+```ocaml
 (** [Poly] represents immutable polynomials with integer coefficients. *)
 module type Poly = sig
   (** [t] is the type of polynomials *)
   type t
-  
-  (** [eval x p] is [p] evaluated at [x].  
-      Example:  if [p] represents $3x^3 + x^2 + x$, then 
-      [eval 10 p] is [3110]. *)
+
+  (** [eval x p] is [p] evaluated at [x]. Example: if [p] represents
+      $3x^3 + x^2 + x$, then [eval 10 p] is [3110]. *)
   val eval : int -> t -> int
 end
 ```
 
-(The use of `$` above comes from LaTeX, in which mathematical formulas are
-surrounded by dollar signs.  Similarly, `^` represents exponentiation 
-in LaTeX.)
+Finish the design of `Poly` by adding more operations to the interface. Consider
+what operations would be useful to a client of the abstraction:
 
-Finish the design of `Poly` by adding more operations to the interface.
-Consider what operations would be useful to a client of the abstraction:
-
-* How would they create polynomials?  
+* How would they create polynomials?
 * How would they combine polynomials to get new polynomials?
 * How would they query a polynomial to find out what
   it represents?
-  
-Write specification comments for the operations that you invent.  Keep
-in mind the spec game as you write them:  could a devious programmer
-subvert your intentions?
- 
-&square;
 
-##### Exercise: poly impl [&#10029;&#10029;&#10029;] 
+Write specification comments for the operations that you invent. Keep in mind
+the spec game as you write them: could a devious programmer subvert your
+intentions?
 
-Implement your specification of `Poly`. As part of your implementation,
-you will need to choose a representation type `t`.  *Hint: recalling
-that our polynomials are dense might guide you in choosing a
-representation type that makes for an easier implementation.*
- 
-&square;
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "poly impl")}}
 
-##### Exercise: int set rep [&#10029;&#10029;&#10029;] 
+Implement your specification of `Poly`. As part of your implementation, you will
+need to choose a representation type `t`. *Hint: recalling that our polynomials
+are dense might guide you in choosing a representation type that makes for an
+easier implementation.*
 
-Consider [this interface for integer sets](intset.mli). 
-Suppose that you wanted the `to_list` implementation to 
-run in constant time, perhaps at the expense of other
-operations being less efficient.  Implement the interface in a file
-named `intset.ml`.  First choose a representation type,
-then document its abstraction function and representation
-invariant.  Inside the implementation, define a `rep_ok`
-function.  Insert applications of it in the appropriate
-places of your implementation to guarantee that all
-input and output values satisfy the representation invariant.
-
-&square;
-
-##### Exercise: interval arithmetic [&#10029;&#10029;&#10029;&#10029;] 
+<!--------------------------------------------------------------------------->
+{{ ex4 | replace("%%NAME%%", "interval arithmetic")}}
 
 Specify and implement a data abstraction for [interval arithmetic][int-arith].
-Be sure to include the abstraction function, representation invariant,
-and `rep_ok`.  Also implement a `to_string` function, or a `format` function
-as seen in the notes on functors.
+Be sure to include the abstraction function, representation invariant, and
+`rep_ok`. Also implement a `to_string` function and a `format` that can be
+installed in the top level with `#install_printer`.
 
 [int-arith]: http://web.mit.edu/hyperbook/Patrikalakis-Maekawa-Cho/node45.html
 
-##### Exercise: association list maps [&#10029;&#10029;&#10029;] 
+<!--------------------------------------------------------------------------->
+{{ ex4 | replace("%%NAME%%", "function maps")}}
 
-Consider the `MyMap` signature in [maps.ml](maps.ml). Create **two**
-implementations of it, both with the representation type `('k * 'v)
-list`. The functions in the interface should mostly be trivially
-implementable with the association list functions in the standard
-library `List` module. Your first implementation should prohibit any key
-from appearing twice in the list; and your second should allow it. Start
-each implementation by documenting the AF and RI for `t`, and only after
-you do that, implement the functions.
-  
-##### Exercise: function maps [&#10029;&#10029;&#10029;&#10029;]   
+Implement a map (aka dictionary) data structure with abstract type `('k, 'v) t`.
+As the representation type, use `'k -> 'v`. That is, a map is represented as an
+OCaml function from keys to values. Document the AF. You do not need an RI. Your
+solution will make heavy use of higher-order functions. Provide at least these
+values and operations: `empty`, `mem`, `find`, `add`, `remove`.
 
-Implement the `MyMap` signature using the representation type `'k -> 'v`.
-That is, a map is represented as an OCaml function from keys to values.
-Your solution will make heavy use of higher-order functions.
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "set black box")}}
 
-## A Buggy Queue
+Go back to the implementation of sets with lists in the previous chapter.
+Based on the specification comments of `Set`, write an OUnit test suite
+for `ListSet` that does black-box testing of all its operations.
 
-Download [`buggy_queues.ml`](buggy_queues.ml), which efficiently implements queues
-with two lists&mdash;**but with a couple bugs deliberately injected**.
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "set glass box")}}
 
-##### Exercise: AF and RI [&#10029;] 
+Achieve as close to 100% code coverage with Bisect as you can for `ListSet`
+and `UniqListSet`.
 
-The `TwoListQueue` module documents an abstraction function
-and a representation invariant, but they are not clearly identified 
-as such.  Modify the comments to explicitly identify the abstraction 
-function and representation invariant.
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "random lists")}}
 
-&square;
+Use `QCheck.Gen.generate1` to generate a list whose length is between 5 and 10,
+and whose elements are integers between 0 and 100. Then use
+`QCheck.Gen.generate` to generate a 3-element list, each element of which is a
+list of the kind you just created with `generate1`.
 
-##### Exercise: rep ok [&#10029;&#10029;] 
+Then use `QCheck.make` to create an arbitrary that represents a list whose
+length is between 5 and 10, and whose elements are integers between 0 and 100.
+The type of your arbitrary should be `int list QCheck.arbitrary`.
 
-Write a `rep_ok` function for `TwoListQueue`.  Its type should be `t
--> t`.  It should raise an exception whenever the representation
-invariant does not hold. Modify the other functions exposed by the
-`Queue` signature to (i) check that `rep_ok` holds for any queues passed
-in, and (ii) check that `rep_ok` also holds for any queues passed out. 
-*Hint: you will need to add nine applications of `rep_ok`.*
+Finally create and run a QCheck test that checks whether at least one element of
+an arbitrary list (of 5 to 10 elements, each between 0 and 100) is even. You'll
+need to "upgrade" the `is_even` property to work on a list of integers rather
+than a single integer.
 
-&square;
+Each time you run the test, recall that it will generate 100 lists and check the
+property of them. If you run the test many times, you'll likely see some
+successes and some failures.
 
-##### Exercise: test with rep ok [&#10029;&#10029;&#10029;] 
+<!--------------------------------------------------------------------------->
+{{ ex3 | replace("%%NAME%%", "qcheck odd divisor")}}
 
-There are two bugs we deliberately injected into `TwoListQueue`. Both
-are places where we failed to apply `norm` to ensure that a queue is in
-normal form.  Figure out where those are by testing each operation of
-`TwoListQueue` in the toplevel to see where your `rep_ok` raises an
-exception. Fix each bug by adding an application of `norm`. 
+Here is a buggy function:
 
-*Hint:  to find one of the bugs, you will need to build a queue of
-length at least 2.*
+```ocaml
+(** [odd_divisor x] is an odd divisor of [x].
+    Requires: [x >= 0]. *)
+let odd_divisor x =
+  if x < 3 then 1 else
+    let rec search y =
+      if y >= x then y  (* exceeded upper bound *)
+      else if x mod y = 0 then y  (* found a divisor! *)
+      else search (y + 2) (* skip evens *)
+    in search 3
+```
 
-&square;
+Write a QCheck test to determine whether the output of that function (on a
+positive integer, per its precondition; *hint: there is an arbitrary that
+generates positive integers*) is both odd and is a divisor of the input. You
+will discover that there is a bug in the function. What is the smallest integer
+that triggers that bug?
+
+<!--------------------------------------------------------------------------->
+{{ ex4 | replace("%%NAME%%", "qcheck avg")}}
+
+Here is a buggy function:
+
+```ocaml
+(** [avg [x1; ...; xn]] is [(x1 + ... + xn) / n].
+     Requires: the input list is not empty. *)
+let avg lst =
+  let rec loop (s, n) = function
+    | [] -> (s, n)
+    | [ h ] -> (s + h, n + 1)
+    | h1 :: h2 :: t -> if h1 = h2 then loop (s + h1, n + 1) t
+      else loop (s + h1 + h2, n + 2) t
+  in
+  let (s, n) = loop (0, 0) lst
+  in float_of_int s /. float_of_int n
+```
+Write a QCheck test that detects the bug. For the property that you check,
+construct your own *reference implementation* of average&mdash;that is,
+a less optimized version of `avg` that is obviously correct.
