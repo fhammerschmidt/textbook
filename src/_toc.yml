@@ -69,13 +69,18 @@
   - file: chapters/modules/summary.md
   - file: chapters/modules/exercises.md
 
-- file: chapters/doctest/intro.md
+- file: chapters/correctness/intro.md
   sections:
-  - file: chapters/doctest/specifications.md
-  - file: chapters/doctest/function_docs.md
-  - file: chapters/doctest/module_docs.md
-  - file: chapters/doctest/test_debug.md
-  - file: chapters/doctest/black_glass_box.md
-  - file: chapters/doctest/randomized.md
-  - file: chapters/doctest/summary.md
-  - file: chapters/doctest/exercises.md
+  - file: chapters/correctness/specifications.md
+  - file: chapters/correctness/function_docs.md
+  - file: chapters/correctness/module_docs.md
+  - file: chapters/correctness/test_debug.md
+  - file: chapters/correctness/black_glass_box.md
+  - file: chapters/correctness/randomized.md
+  - file: chapters/correctness/proving_correctness.md
+  - file: chapters/correctness/structural_induction.md
+  - file: chapters/correctness/alg_spec.md
+  - file: chapters/correctness/summary.md
+  - file: chapters/correctness/exercises.md
+
+#   - file: chapters/correctness/fm_exercises.md
