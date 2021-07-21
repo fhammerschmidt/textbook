@@ -421,7 +421,7 @@ that, let's think about the number of bindings and buckets in the table. Define
 the *load factor* of the table to be
 
 $$
-\frac{\mbox{# bindings}}{\mbox{# buckets}}
+\frac{\mbox{\# bindings}}{\mbox{\# buckets}}
 $$
 
 So a table with 20 bindings and 10 buckets has a load factor of 2, and a table
