@@ -15,6 +15,8 @@ kernelspec:
 
 # Mutable Fields
 
+{{ video_embed | replace("%%VID%%", "9RNeX5t4_xA")}}
+
 The fields of a record can be declared as mutable, meaning their contents can be
 updated without constructing a new record. For example, here is a record type
 for two-dimensional colored points whose color field `c` is mutable:
@@ -97,6 +99,8 @@ Nonetheless the functions do behave the same as the OCaml source given above.
 
 ## Example: Mutable Singly-Linked Lists
 
+{{ video_embed | replace("%%VID%%", "dLi6Vo_Yp34")}}
+
 Using mutable fields, we can implement singly-linked lists almost the same as we
 did with references. The types for nodes and lists are simplified:
 
@@ -114,6 +118,8 @@ type 'a mlist = {
   mutable first : 'a node option;
 }
 ```
+
+{{ video_embed | replace("%%VID%%", "EEXa3bY4ZwI")}}
 
 And there is no essential difference in the algorithms for implementing
 the operations, but the code is slightly simplified because we don't

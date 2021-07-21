@@ -15,6 +15,8 @@ kernelspec:
 
 # Arrays and Loops
 
+{{ video_embed | replace("%%VID%%", "-k4rM1viJH4")}}
+
 Arrays are fixed-length mutable sequences with constant-time access and update.
 So they are similar in various ways to refs, lists, and tuples. Like refs, they
 are mutable. Like lists, they are (finite) sequences. Like tuples, their length
@@ -100,3 +102,5 @@ Loops are themselves not inherently mutable, but they are most often used in
 conjunction with mutable features like arrays&mdash;typically, the body of the
 loop causes side effects. We can also use functions like `Array.iter`,
 `Array.map`, and `Array.fold_left` instead of loops.
+
+{{ video_embed | replace("%%VID%%", "GkIgGhqHI7M")}}

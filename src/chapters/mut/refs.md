@@ -15,6 +15,8 @@ kernelspec:
 
 # Refs
 
+{{ video_embed | replace("%%VID%%", "R0tGac0jaEQ")}}
+
 A *ref* is like a pointer or reference in an imperative language. It is a
 location in memory whose contents may change. Refs are also called *ref cells*,
 the idea being that there's a cell in memory that can change.
@@ -67,6 +69,8 @@ of the memory location did indeed change.
 
 ## Aliasing
 
+{{ video_embed | replace("%%VID%%", "pt06BxGhjDQ")}}
+
 Now that we have refs, we have *aliasing*: two refs could point to the same
 memory location, hence updating through one causes the other to also be updated.
 For example,
@@ -84,6 +88,8 @@ The result of executing that code is that `w` is bound to `85`, because
 also causes `z` to be `43`.
 
 ## Syntax and Semantics
+
+{{ video_embed | replace("%%VID%%", "ByV1N3hDgSw")}}
 
 The semantics of refs is based on *locations* in memory. Locations are values
 that can be passed to and returned from functions. But unlike other values
@@ -151,7 +157,46 @@ as an expression that constructs refs.
 
 * `!e : t` if `e : t ref`.
 
+## Sequencing of Effects
+
+{{ video_embed | replace("%%VID%%", "aj0bpOyv7Gs")}}
+
+The semicolon operator is used to sequence effects, such as mutating refs. We've
+seen semicolon occur previously with printing. Now that we're studying
+mutability, it's time to treat it formally.
+
+* **Syntax:** `e1; e2`
+
+* **Dynamic semantics:** To evaluate `e1; e2`,
+
+  - First evaluate `e1` to a value `v1`.
+
+  - Then evaluate `e2` to a value `v2`.
+
+  - Return `v2`.  (`v1` is not used at all.)
+
+  - If there are multiple expressions in a sequence, e.g., `e1; e2; ...; en`,
+    then evaluate each one in order from left to right, returning only `vn`.
+    Another way to think about this is that semicolon is right
+    associative&mdash;for example `e1; e2; e3` is the same as `e1; (e2; e3))`.
+
+* **Static semantics:** `e1; e2 : t` if `e1 : unit` and `e2 : t`. Similarly,
+  `e1; e2; ...; en : t` if `e1 : unit`, `e2 : unit`, ... (i.e., all expressions
+  except `en` have type `unit`), and `en : t`.
+
+The typing rule for semicolon is designed to prevent programmer mistakes. For
+example, a programmer who writes `2+3; 7` probably didn't mean to: there's no
+reason to evaluate `2+3` then throw away the result and instead return `7`. The
+compiler will give you a warning if you violate this particular typing rule.
+
+To get rid of the warning (if you're sure that's what you need to do), there's a
+function `ignore : 'a -> unit` in the standard library. Using it,
+`ignore(2+3); 7` will compile without a warning. Of course, you could code up
+`ignore` yourself: `let ignore _ = ()`.
+
 ## Example: Mutable Counter
+
+{{ video_embed | replace("%%VID%%", "o5wFQvCRJsc")}}
 
 Here is code that implements a *counter*. Every time `next_val` is called, it
 returns one more than the previous time.
@@ -590,7 +635,6 @@ unequal:
 ```{code-cell} ocaml
 ref 42 <> ref 43
 ```
-
 
 ## Example: Singly-linked Lists
 
