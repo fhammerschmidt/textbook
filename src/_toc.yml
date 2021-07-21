@@ -1,7 +1,8 @@
 format: jb-book
 root: cover.md
 parts:
-  - numbered: True
+  - caption: Introduction
+    numbered: True
     chapters:
 
     - file: chapters/intro/intro.md
@@ -24,6 +25,10 @@ parts:
       - file: chapters/basics/debugging.md
       - file: chapters/basics/summary.md
       - file: chapters/basics/exercises.md
+
+  - caption: OCaml Programming
+    numbered: True
+    chapters:
 
     - file: chapters/data/intro.md
       sections:
@@ -67,6 +72,10 @@ parts:
       - file: chapters/modules/functors.md
       - file: chapters/modules/summary.md
       - file: chapters/modules/exercises.md
+
+  - caption: Correctness and Efficiency
+    numbered: True
+    chapters:
 
     - file: chapters/correctness/intro.md
       sections:
