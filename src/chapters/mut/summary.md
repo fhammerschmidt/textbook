@@ -1,15 +1,14 @@
 # Summary
 
-Mutable data types make programs harder to reason about.  For
-example, before refs, we didn't have to worry about aliasing in OCaml.  
-But mutability does have its uses.  I/O is fundamentally about mutation.
-And some data structures (like arrays and hash tables) cannot be 
-implemented as efficiently without mutability.
+Mutable data types make programs harder to reason about. For example, before
+refs, we didn't have to worry about aliasing in OCaml. But mutability does have
+its uses. I/O is fundamentally about mutation. And some data structures (like
+arrays and hash tables) cannot be implemented as efficiently without mutability.
 
 Mutability thus offers great power, but with great power comes great
-responsibility.  Try not to abuse your new-found power!
+responsibility. Try not to abuse your new-found power!
 
-## Terms and concepts
+## Terms and Concepts
 
 * address
 * alias
@@ -33,11 +32,10 @@ responsibility.  Try not to abuse your new-found power!
 * sequencing
 * structural equality
 
-## Further reading
+## Further Reading
 
 * *Introduction to Objective Caml*, chapters 7 and 8.
 
 * *OCaml from the Very Beginning*, chapter 13.
 
 * *Real World OCaml*, chapters 8.
-

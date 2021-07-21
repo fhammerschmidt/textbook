@@ -91,20 +91,18 @@ parts:
       - file: chapters/correctness/summary.md
       - file: chapters/correctness/exercises.md
 
-    - file: chapters/mut/intro.md # TODO update, merge mut+eff
+    - file: chapters/mut/intro.md
       sections:
       - file: chapters/mut/refs.md
       - file: chapters/mut/mutable_fields.md
       - file: chapters/mut/arrays.md
-      - file: chapters/mut/hash_tables.md
-      # - file: chapters/eff/amortized.md
-      #   sections:
-      #   - file: chapters/eff/amortized_hash.md
-      #   - file: chapters/eff/amortized_queue.md
-      #   - file: chapters/eff/amortized_methods.md
-      #   - file: chapters/eff/amortized_persistence.md
-      # - file: chapters/mut/summary.md
-      # - file: chapters/mut/exercises.md
+      - file: chapters/mut/summary.md
+      - file: chapters/mut/exercises.md
+
+    - file: chapters/eff/intro.md
+      sections:
+      - file: chapters/eff/hash_tables.md
+      - file: chapters/eff/amortized.md
       # - file: chapters/eff/summary.md
       # - file: chapters/eff/exercises.md
 

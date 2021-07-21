@@ -1,4 +1,4 @@
-# Efficiency
+# Efficient Data Structures
 
 Efficient data structures are important building blocks for large programs.
 In this chapter, we'll discuss what it means to be efficient, how to
