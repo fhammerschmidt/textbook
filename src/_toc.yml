@@ -3,6 +3,7 @@ root: cover.md
 parts:
   - numbered: True
     chapters:
+
     - file: chapters/intro/intro.md
       sections:
       - file: chapters/intro/past.md
@@ -11,6 +12,7 @@ parts:
       - file: chapters/intro/about.md
       - file: chapters/intro/3110.md
       - file: chapters/intro/summary.md
+
     - file: chapters/basics/intro.md
       sections:
       - file: chapters/basics/toplevel.md
@@ -22,6 +24,7 @@ parts:
       - file: chapters/basics/debugging.md
       - file: chapters/basics/summary.md
       - file: chapters/basics/exercises.md
+
     - file: chapters/data/intro.md
       sections:
       - file: chapters/data/lists.md
@@ -38,6 +41,7 @@ parts:
       - file: chapters/data/nats.md
       - file: chapters/data/summary.md
       - file: chapters/data/exercises.md
+
     - file: chapters/hop/intro.md
       sections:
       - file: chapters/hop/higher_order.md
@@ -49,6 +53,7 @@ parts:
       - file: chapters/hop/currying.md
       - file: chapters/hop/summary.md
       - file: chapters/hop/exercises.md
+
     - file: chapters/modules/intro.md
       sections:
       - file: chapters/modules/module_systems.md
@@ -62,6 +67,7 @@ parts:
       - file: chapters/modules/functors.md
       - file: chapters/modules/summary.md
       - file: chapters/modules/exercises.md
+
     - file: chapters/correctness/intro.md
       sections:
       - file: chapters/correctness/specifications.md
@@ -75,11 +81,24 @@ parts:
       - file: chapters/correctness/alg_spec.md
       - file: chapters/correctness/summary.md
       - file: chapters/correctness/exercises.md
-    - file: chapters/mut/intro.md
+
+    - file: chapters/mut/intro.md # TODO update, merge mut+eff
       sections:
       - file: chapters/mut/refs.md
       - file: chapters/mut/mutable_fields.md
       - file: chapters/mut/arrays.md
+      - file: chapters/mut/hash_tables.md
+      # - file: chapters/eff/amortized.md
+      #   sections:
+      #   - file: chapters/eff/amortized_hash.md
+      #   - file: chapters/eff/amortized_queue.md
+      #   - file: chapters/eff/amortized_methods.md
+      #   - file: chapters/eff/amortized_persistence.md
+      # - file: chapters/mut/summary.md
+      # - file: chapters/mut/exercises.md
+      # - file: chapters/eff/summary.md
+      # - file: chapters/eff/exercises.md
+
   - caption: Appendix
     chapters:
     - file: chapters/appendix/bigoh.md
