@@ -92,11 +92,6 @@
   # - file: chapters/mut/exercises.md
 
 # - file: chapters/eff/intro.md
-#   - file: chapters/eff/defining.md
-#     - file: chapters/eff/eff1.md
-#     - file: chapters/eff/eff2.md
-#     - file: chapters/eff/bigoh.md
-#     - file: chapters/eff/eff3.md
 #   - file: chapters/eff/eff_maps.md
 #     - file: chapters/eff/map_assoclist.md
 #     - file: chapters/eff/map_dat.md
@@ -106,3 +101,7 @@
 #     - file: chapters/eff/amortized_queue.md
 #     - file: chapters/eff/amortized_methods.md
 #     - file: chapters/eff/amortized_persistence.md
+
+- file: chapters/appendix/intro.md
+  sections:
+  - file: chapters/appendix/bigoh.md
