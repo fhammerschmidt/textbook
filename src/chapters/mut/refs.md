@@ -619,6 +619,9 @@ To create an empty list, we simply return a ref to `None`:
 let empty () : 'a mlist = ref None
 ```
 
+Note the type of `empty`: instead of being a value, it is now a function. This
+is typical of functions that create mutable data structures.
+
 Inserting a new first element just requires creating a new node, linking from
 it to the original list, and mutating the list:
 
@@ -628,6 +631,16 @@ it to the original list, and mutating the list:
 let insert_first (lst : 'a mlist) (v : 'a) : unit =
   lst := Some { next = ref !lst; value = v }
 ```
+
+Again, note the type of `insert_first`. Rather than returning an `'a mlist`, it
+returns `unit`. This again is typical of functions that modify mutable data
+structures.
+
+In both `empty` and `insert_first`, the use of `unit` makes the functions more
+like their equivalents in an imperative language. The constructor for an empty
+list in Java, for example, might not take any arguments (which is equivalent to
+taking `unit`). And the `insert_first` operation for a Java linked list might
+return `void`, which is equivalent to returning `unit`.
 
 Finally, here's a conversion function from our new mutable lists to
 OCaml's built-in lists:

@@ -87,8 +87,7 @@
   sections:
   - file: chapters/mut/refs.md
   - file: chapters/mut/mutable_fields.md
-  # - file: chapters/mut/ex_mutable_stack.md
-  # - file: chapters/mut/arrays.md
+  - file: chapters/mut/arrays.md
   # - file: chapters/mut/summary.md
   # - file: chapters/mut/exercises.md
 
