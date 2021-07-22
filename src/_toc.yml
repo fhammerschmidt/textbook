@@ -1,6 +1,10 @@
 format: jb-book
 root: cover.md
 parts:
+  - caption: Preface
+    chapters:
+    - file: chapters/preface/about.md
+
   - caption: Introduction
     numbered: True
     chapters:
@@ -10,7 +14,6 @@ parts:
       - file: chapters/intro/past.md
       - file: chapters/intro/present.md
       - file: chapters/intro/future.md
-      - file: chapters/intro/about.md
       - file: chapters/intro/3110.md
       - file: chapters/intro/summary.md
 
@@ -99,14 +102,14 @@ parts:
       - file: chapters/mut/summary.md
       - file: chapters/mut/exercises.md
 
-    - file: chapters/eff/intro.md
+    - file: chapters/ds/intro.md
       sections:
-      - file: chapters/eff/hash_tables.md
-      - file: chapters/eff/amortized.md
-      - file: chapters/eff/rb.md
-      - file: chapters/eff/sequence.md
-      # - file: chapters/eff/summary.md
-      # - file: chapters/eff/exercises.md
+      - file: chapters/ds/hash_tables.md
+      - file: chapters/ds/amortized.md
+      - file: chapters/ds/rb.md
+      - file: chapters/ds/sequence.md
+      # - file: chapters/ds/summary.md
+      # - file: chapters/ds/exercises.md
 
   - caption: Appendix
     chapters:
