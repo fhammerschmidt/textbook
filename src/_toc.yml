@@ -111,14 +111,13 @@ parts:
       - file: chapters/ds/memoization.md
       - file: chapters/ds/promises.md
       - file: chapters/ds/monads.md
-      # - file: chapters/ds/summary.md
-      # - file: chapters/ds/exercises.md
+      - file: chapters/ds/summary.md
+      - file: chapters/ds/exercises.md
 
   - caption: Appendix
     chapters:
     - file: chapters/appendix/bigoh.md
 
-# * [12. Advanced Topics](adv/intro.md)
+# * [12. Advanced Topics]
 #   - file: chapters/adv/curry-howard.md
-#   - file: chapters/adv/summary.md
 #   - file: chapters/adv/exercises.md
