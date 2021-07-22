@@ -108,6 +108,7 @@ parts:
       - file: chapters/ds/amortized.md
       - file: chapters/ds/rb.md
       - file: chapters/ds/sequence.md
+      - file: chapters/ds/memoization.md
       # - file: chapters/ds/summary.md
       # - file: chapters/ds/exercises.md
 
@@ -127,6 +128,6 @@ parts:
 #     - file: chapters/adv/ex_lwt_monad.md
 #     - file: chapters/adv/monad_laws.md
 #   - file: chapters/adv/curry-howard.md
-#   - file: chapters/adv/memoization.md
+#
 #   - file: chapters/adv/summary.md
 #   - file: chapters/adv/exercises.md
