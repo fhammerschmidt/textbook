@@ -99,7 +99,7 @@ parts:
       - file: chapters/mut/summary.md
       - file: chapters/mut/exercises.md
 
-    - file: chapters/eff/intro.md # TODO: revisit
+    - file: chapters/eff/intro.md
       sections:
       - file: chapters/eff/hash_tables.md
       - file: chapters/eff/amortized.md
@@ -111,9 +111,6 @@ parts:
   - caption: Appendix
     chapters:
     - file: chapters/appendix/bigoh.md
-
-#   - file: chapters/eff/summary.md
-#   - file: chapters/eff/exercises.md
 
 # * [12. Advanced Topics](adv/intro.md)
 #   - file: chapters/adv/concurrency.md
