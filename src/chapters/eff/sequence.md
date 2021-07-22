@@ -462,8 +462,8 @@ module SequenceFibs = struct
 
   let rec fibs =
     Cons(1, fun () ->
-        Cons(1, fun () ->
-            sum (tl fibs) fibs))
+      Cons(1, fun () ->
+        sum (tl fibs) fibs))
 
   let nth_fib n =
     nth n fibs
@@ -496,8 +496,8 @@ module LazyFibs = struct
 
   let rec fibs =
     Cons(1, lazy (
-        Cons(1, lazy (
-            sum (tl fibs) fibs))))
+      Cons(1, lazy (
+        sum (tl fibs) fibs))))
 
   let nth_fib n =
     nth n fibs
