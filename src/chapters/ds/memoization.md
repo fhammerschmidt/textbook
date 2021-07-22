@@ -22,26 +22,18 @@ algorithms, without having to change the way the algorithm works.
 
 Let's see apply the Abstraction Principle and invent a way to memoize *any*
 function, so that the function only had to be evaluated once on any given input.
-We'll end up using imperative features (arrays and hash tables) as part of our
-solution.
+We'll end up using imperative data structures (arrays and hash tables) as part
+of our solution.
 
 ## Fibonacci
 
-Let's again consider the problem of computing the nth Fibonacci number, defined
-as
-
-$$
-f(n) = f(n−1) + f(n−2)
-$$
-
-with $f(0) = f(1) = 1$. We can translate that directly into code:
+Let's again consider the problem of computing the nth Fibonacci number.
+The naive recursive implementation takes exponential time, because of the
+recomputation of the same Fibonacci numbers over and over again:
 
 ```{code-cell} ocaml
 let rec fib n = if n < 2 then 1 else fib (n - 1) + fib (n - 2)
 ```
-
-Unfortunately, that implementation takes exponential time, because of the
-recomputation of the same Fibonacci numbers over and over again.
 
 ```{note}
 To be precise, its running time turns out to be $O(\phi^n)$, where $\phi$ is the
@@ -264,8 +256,8 @@ requires thinking carefully.
 <!--
 *****
 MRC 7/22/21: the section below needs a lot more explanation. Also the value
-`big` was undefined in the original notes. We need to figure out how big
-it should be.
+`big` was undefined in the original notes, so the code didn't compile.
+I added a definition of `target + 1` but IDK whether that's "big enough".
 *****
 
 ## Optimal Line Breaking
