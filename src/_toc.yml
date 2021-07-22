@@ -109,6 +109,7 @@ parts:
       - file: chapters/ds/rb.md
       - file: chapters/ds/sequence.md
       - file: chapters/ds/memoization.md
+      - file: chapters/ds/promises.md
       # - file: chapters/ds/summary.md
       # - file: chapters/ds/exercises.md
 
@@ -117,11 +118,6 @@ parts:
     - file: chapters/appendix/bigoh.md
 
 # * [12. Advanced Topics](adv/intro.md)
-#   - file: chapters/adv/concurrency.md
-#     - file: chapters/adv/promises.md
-#     - file: chapters/adv/asynch_io.md
-#     - file: chapters/adv/callbacks.md
-#     - file: chapters/adv/implementing_callbacks.md
 #   - file: chapters/adv/monads.md
 #     - file: chapters/adv/ex_maybe_monad.md
 #     - file: chapters/adv/ex_writer_monad.md
