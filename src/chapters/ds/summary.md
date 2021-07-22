@@ -1,5 +1,9 @@
 # Summary
 
+This chapter has taken a deep dive into some advanced data structures, analysis
+techniques, and programming patterns. Our goal has been to write correct,
+efficient, beautiful code. Did we succeed? You can be the judge.
+
 ## Terms and Concepts
 
 * amortized analysis
